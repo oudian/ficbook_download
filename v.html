@@ -3,48 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Copy Text from File</title>
+    <title>Copy File Content</title>
 </head>
 <body>
-    <input type="file" id="fileInput">
-    <button onclick="copyText()">Copy Text</button>
+
+    <h1>Копирование содержимого файла</h1>
+
+    <button onclick="copyFileContent()">Копировать содержимое файла</button>
 
     <script>
-        function copyText() {
-            const fileInput = document.getElementById('fileInput');
-            
-            // Проверка, был ли выбран файл
-            if (fileInput.files.length > 0) {
-                const file = fileInput.files[0];
-                const reader = new FileReader();
+        function copyFileContent() {
+            // Создаем новый XMLHttpRequest объект
+            var xhr = new XMLHttpRequest();
 
-                // Обработчик события при завершении чтения файла
-                reader.onload = function (e) {
-                    const fileContent = e.target.result;
+            // Указываем метод GET и путь к файлу
+            xhr.open('GET', 'fb(500000-1000000).txt', true);
 
-                    // Создание временного элемента textarea для копирования текста в буфер обмена
-                    const textarea = document.createElement('textarea');
-                    textarea.value = fileContent;
+            // Устанавливаем обработчик события загрузки
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    // Создаем элемент textarea для временного хранения текста
+                    var textarea = document.createElement('textarea');
+                    textarea.value = xhr.responseText;
 
-                    // Добавление элемента в DOM и выделение текста
+                    // Добавляем элемент textarea на страницу
                     document.body.appendChild(textarea);
+
+                    // Выделяем текст внутри textarea
                     textarea.select();
 
-                    // Копирование текста в буфер обмена
+                    // Копируем выделенный текст в буфер обмена
                     document.execCommand('copy');
 
-                    // Удаление временного элемента textarea
+                    // Удаляем временный элемент textarea
                     document.body.removeChild(textarea);
 
-                    alert('Text copied to clipboard!');
-                };
+                    alert('Содержимое файла скопировано в буфер обмена.');
+                }
+            };
 
-                // Чтение файла как текст
-                reader.readAsText(file);
-            } else {
-                alert('Please select a file.');
-            }
+            // Отправляем запрос
+            xhr.send();
         }
     </script>
+
 </body>
 </html>
