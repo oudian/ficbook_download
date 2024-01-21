@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy Text from File</title>
+</head>
+<body>
+    <input type="file" id="fileInput">
+    <button onclick="copyText()">Copy Text</button>
+
+    <script>
+        function copyText() {
+            const fileInput = document.getElementById('fileInput');
+            
+            // Проверка, был ли выбран файл
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const reader = new FileReader();
+
+                // Обработчик события при завершении чтения файла
+                reader.onload = function (e) {
+                    const fileContent = e.target.result;
+
+                    // Создание временного элемента textarea для копирования текста в буфер обмена
+                    const textarea = document.createElement('textarea');
+                    textarea.value = fileContent;
+
+                    // Добавление элемента в DOM и выделение текста
+                    document.body.appendChild(textarea);
+                    textarea.select();
+
+                    // Копирование текста в буфер обмена
+                    document.execCommand('copy');
+
+                    // Удаление временного элемента textarea
+                    document.body.removeChild(textarea);
+
+                    alert('Text copied to clipboard!');
+                };
+
+                // Чтение файла как текст
+                reader.readAsText(file);
+            } else {
+                alert('Please select a file.');
+            }
+        }
+    </script>
+</body>
+</html>
