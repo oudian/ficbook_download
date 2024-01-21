@@ -1,0 +1,128 @@
+import requests
+from bs4 import BeautifulSoup
+import time
+import os
+import re
+from urllib.parse import urljoin
+
+base_url = "https://ficbook.net/readfic/"
+output_folder = "books/"
+log_file_path = "download_logs.txt"
+error_log_file_path = "errors_list.txt"
+last_processed_fic_id_file = "last_processed_fic_id.txt"
+
+os.makedirs(output_folder, exist_ok=True)
+
+def save_content_to_file(content, filename):
+    with open(filename, 'w', encoding='utf-8') as file:
+        file.write(content)
+
+def write_log(message):
+    log_message = f"{time.strftime('%Y-%m-%d %H:%M:%S')} - {message}"
+    
+    print(log_message)
+
+    with open(log_file_path, 'a', encoding='utf-8') as log_file:
+        log_file.write(log_message + "\n")
+
+def write_error(message):
+    error_message = f"{time.strftime('%Y-%m-%d %H:%M:%S')} - {message}"
+    
+    with open(error_log_file_path, 'a', encoding='utf-8') as error_file:
+        error_file.write(error_message + "\n")
+
+def extract_content_from_url(url, fic_id, li_index):
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+    }
+
+    retries = 0
+
+    while retries < 5:  # Максимум 5 попыток
+        try:
+            response = requests.get(url, headers=headers, timeout=10)
+
+            if response.status_code == 200:
+                soup = BeautifulSoup(response.text, 'html.parser')
+
+                content_div = soup.find('div', {'id': 'content'})
+
+                if content_div:
+                    content_text = content_div.get_text()
+
+                    title_tag = soup.find('h1', {'class': 'mb-10'})
+
+                    book_title = title_tag.text.strip() if title_tag else f"book_{fic_id}"
+
+                    book_title = re.sub(r'[\/:*?"<>|]', '', book_title)
+
+                    book_folder = f"{output_folder}{fic_id}_{book_title}/"
+
+                    try:
+                        os.makedirs(book_folder, exist_ok=True)
+                    except FileNotFoundError as e:
+                        write_error(f"[WinError {e.errno}] {e.strerror}: {book_folder}")
+                        break
+
+                    filename = f"{book_folder}{fic_id}_{li_index}.txt"
+
+                    save_content_to_file(content_text, filename)
+
+                    write_log(f"Содержимое успешно сохранено в {filename}")
+
+                    time.sleep(0.4)
+                    break  # Выходим из цикла, так как запрос успешен
+                else:
+                    part_links = soup.find_all('li', {'class': 'part'})
+
+                    title_tag = soup.find('h1', {'class': 'mb-10'})
+
+                    book_title = title_tag.text.strip() if title_tag else f"book_{fic_id}"
+
+                    book_title = re.sub(r'[\/:*?"<>|]', '', book_title)
+
+                    book_folder = f"{output_folder}{fic_id}_{book_title}/"
+
+                    try:
+                        os.makedirs(book_folder, exist_ok=True)
+                    except FileNotFoundError as e:
+                        write_error(f"[WinError {e.errno}] {e.strerror}: {book_folder}")
+                        break
+
+                    for index, part_link in enumerate(part_links):
+                        path = part_link.find('a')['href']
+
+                        full_url = urljoin(url, path)
+
+                        extract_content_from_url(full_url, fic_id, index + 1)
+                    break  # Выходим из цикла, так как запрос успешен
+            elif response.status_code == 429:  # Ошибка 429 - слишком много запросов
+                retries += 1
+                write_log(f"Ошибка 429: Слишком много запросов. Пауза на 1 минуту (попытка {retries}/5)")
+                time.sleep(60)  # Пауза на минуту перед следующей попыткой
+            else:
+                write_log(f"Ошибка при запросе страницы {url}. Код состояния: {response.status_code}")
+                break  # Выходим из цикла, так как запрос неуспешен
+        except requests.exceptions.ConnectTimeout:
+            write_error(f"Тайм-аут подключения к {url}. Попытка {retries + 1}/5")
+            retries += 1
+            time.sleep(60)  # Пауза на минуту перед следующей попыткой
+        except Exception as e:
+            write_error(f"Произошла ошибка: {e}")
+            break  # Выходим из цикла, так как произошла неизвестная ошибка
+
+    with open(last_processed_fic_id_file, 'w') as last_fic_id_file:
+        last_fic_id_file.write(str(fic_id))
+
+try:
+    with open(last_processed_fic_id_file, 'r') as last_fic_id_file:
+        last_processed_fic_id = int(last_fic_id_file.read().strip())
+except FileNotFoundError:
+    last_processed_fic_id = 0
+
+for fic_id in range(last_processed_fic_id, 5500000):
+    url = f"{base_url}{fic_id}"
+
+    extract_content_from_url(url, fic_id, 0)
+
+    time.sleep(0.4)
