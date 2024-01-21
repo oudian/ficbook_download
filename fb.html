@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Фикбук в каждом доме</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        article {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 24px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        p {
+            color: #555;
+        }
+        
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            color: #0026ff;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .p-title {
+            font-size: 20px;
+            color: black;
+        }
+
+        .p-title-1 {
+            font-size: 25px;
+            color: black;
+            text-align: center;
+            
+        }
+
+        .center-images {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .center-images img {
+            margin: 0 50px; 
+            width: 150px; 
+        }
+
+        .caption {
+            font-family: Arial, sans-serif;
+        }
+
+        .content {
+            display: none; /* Изначально скрываем содержимое */
+        }
+
+
+        .files-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.image-container {
+    text-align: center;
+}
+
+.image-container img {
+    width: auto;
+    height: 100px;
+}
+
+.file-name {
+    margin-top: 5px;
+}
+
+.image-container a {
+    text-decoration: none; 
+    color: #333; 
+}
+
+.download-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 13px;
+}
+
+.download-icon img {
+    width: 100px;
+    height: auto;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+}
+      
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Фикбук в каждый дом! Спасём наши работы!</h1>
+    </header>
+
+    <article>
+        <p>
+            Доброго времени суток. Я знаю, что в целом вам и нахер не сдались все эти трудности и вы просто хотите прочитать продолжение, но всё же. 
+            Я не буду вас заставлять проходить свои игры, или участвовать в каких-то квестах. 
+            На этот раз вам нужно просто прочитать о моём небольшом проекте, попутно собирая цифры, чтобы в конце получить пароль для доступа к проде. 
+            Просто небольшая хитрость, чтобы никто не проматывал.
+        </p>
+        <p>
+            P.s: <span class="tooltip">Синим<span class="tooltiptext">Да-да, именно так.</span></span> помечен текст, после нажатия на который открывается пояснение к слову.
+        </p>
+        <p>
+            Не буду отнимать у вас много времени и сразу же перейду к сути: я хочу скачать все работы с фикбука, и для этого мне нужна ваша помощь. 
+            Точнее, все работы с 23 июня 2009 года по 25 июля 2023 года. То есть все работы по <a href="https://ficbook.net/readfic/13725396">эту</a>.
+        </p> 
+
+            <p class="p-title">Почему именно по это число?</p> 
+
+        <p>
+            Дело в том, что с этого дня, как некоторые могли заметить, фикбук начал выдавать работам id в формате 
+            <span class="tooltip">UUID<span class="tooltiptext">то есть, что-то вроде: dfg010b7-2as1-4c48-b426-0f17a6b3b409</span></span>. 
+            Для моей цели это не есть хорошо, так как очень сильно затрудняет <span class="tooltip">скрапинг<span class="tooltiptext">Скрапинг (или веб-скрапинг) - это процесс автоматического извлечения данных с веб-страниц.</span></span>.
+            То есть, не получится скачать все работы банальным перебором ссылок с 1 по текущую работу, а только по 13725396.
+        </p> 
+
+        <p class="p-title">Чем вы можете мне помочь?</p>
+
+        <p>
+            Всё очень просто. Скачайте на своё устройство мой веб-скрапер, который всё сделает автоматически. 
+            Если я буду делать это один, то даже в самом лучшем случае процесс займёт минимум год. Для самого быстрого результата мне потребуется ещё 27 человек. 
+            На данный момент, я дошёл до номера 133665, а это чуть меньше процента. И делал я это несколько дней без перерывов. Скачивать работы можно как с компьютера, так и с телефона.
+        </p>
+
+        <p class="p-title">Зачем мне это?<p>
+
+        <p>
+            У меня есть небеспочвенные подозрения о том, что вскоре фикбук может скоропостижно сгинуть. 
+            Как вы давно заметили, законы РФ начали очень сильно его душить. Несмотря на то, что OOO фикбука зарегистрировано в Латвии 
+            (там же, где и располагаются сервера нашего любимого сайта), фикбук обязан ориентироваться на законы данной страны, 
+            так как основная масса читателей (70%) находится именно там. Так вот. Есть огромный шанс, что в случае блокировки сайта на территории РФ он благополучно схлопнется, 
+            и в итоге миллионы фанфиков, которые когда-либо были написаны и опубликованы исключительно на данном ресурсе, просто уйдут в небытие. Я давно об этом подозревал, 
+            но недавний релиз исключительно англоязычного сайта fic.fan только подкрепил мои подозрения. Я очень сомневаюсь, 
+            что при закрытии сайта кто-то из администрации озаботится бэкапом работ с базы данных для их дальнейшей публикации, 
+            так как и в лучшие времена администрация сайта всегда наплевательски относилась за их сохранность. 
+            В конце концов, из 133665 просканированных страниц было успешно скачано только 47182. То есть, 86483 были попросту удалены по тем или иным причинам. А это 65% от общего числа.
+        </p>
+        <p class="p-title-1">Как можно скачать скрапер?</p>
+        <br><p>Для начала выберете устройство, на который вы хотите установить скрапер:</p><br>
+
+        <div class="center-images">
+            <div class="device" onclick="showContent('pc')">
+                <img src="computer.png" alt="Компьютер">
+                <p class="caption">Компьютер</p>
+            </div>
+            <div class="device" onclick="showContent('sp')">
+                <img src="smartphone.png" alt="Смартфон">
+                <p class="caption">Смартфон</p>
+            </div>
+        </div>
+        <div class="content" id="pcContent">
+        <p>
+            Выберите блок с диапазоном работ, который вы будете скачивать. Пожалуйста, не смущайтесь, если у всех вариантов уже есть один или несколько голосов, 
+            так как многие могут просто скачивать и забивать. Просто выберите вариант с найменьшим числом голосов. 
+        </p>
+
+        <div class="files-container">
+            <div class="image-container">
+                    <img src="exe-my.png" alt="Изображение">
+                    <p class="file-name">1-500000</p>
+                </a>
+            </div>
+    
+            <div class="image-container">
+                <a href="fb/fb(500000-1000000).zip" download>
+                    <img src="exe.png" alt="Изображение">
+                    <p class="file-name">500000-1000000</p>
+                </a>
+            </div>
+    
+            <div class="image-container">
+                <a href="fb/fb(1000000-1500000).zip" download>
+                    <img src="exe.png" alt="Изображение">
+                    <p class="file-name">1000000-1500000</p>
+                </a>
+            </div>
+    
+            <div class="image-container">
+                <a href="fb/fb(1500000-2000000).zip" download>
+                    <img src="exe.png" alt="Изображение">
+                    <p class="file-name">1500000-2000000</p>
+                </a>
+            </div>
+    
+            <div class="image-container">
+                <a href="fb/fb(2000000-2500000).zip" download>
+                    <img src="exe.png" alt="Изображение">
+                    <p class="file-name">2000000-2500000</p>
+                </a>
+            </div>
+    
+            <div class="image-container">
+                <a href="fb/fb(2500000-3000000).zip" download>
+                    <img src="exe.png" alt="Изображение">
+                    <p class="file-name">2500000-3000000</p>
+                </a>
+            </div>
+    
+            <div class="image-container">
+                <a href="fb/fb(3000000-3500000).zip" download>
+                    <img src="exe.png" alt="Изображение">
+                    <p class="file-name">3000000-3500000</p>
+                </a>
+            </div>
+
+            <div class="image-container">
+                <a href="fb/fb(3500000-4000000).zip" download>
+                    <img src="exe.png" alt="Изображение">
+                    <p class="file-name">3500000-4000000</p>
+                </a>
+            </div>
+
+            <div class="image-container">
+                <a href="fb/fb(4000000-4500000).zip" download>
+                    <img src="exe.png" alt="Изображение">
+                    <p class="file-name">4000000-4500000</p>
+                </a>
+            </div>
+
+            <div class="image-container">
+                <a href="fb/fb(4500000-5000000).zip" download>
+                    <img src="exe.png" alt="Изображение">
+                    <p class="file-name">4500000-5000000</p>
+                </a>
+            </div>
+
+            <div class="image-container">
+                <a href="fb/fb(5000000-5500000).zip" download>
+                    <img src="exe.png" alt="Изображение">
+                    <p class="file-name">5000000-5500000</p>
+                </a>
+            </div>
+            
+            <div class="image-container">
+                <a href="fb/fb(5500000-6000000).zip" download>
+                    <img src="exe.png" alt="Изображение">
+                    <p class="file-name">5500000-6000000</p>
+                </a>
+            </div>
+
+            <div class="image-container">
+                <a href="fb/fb(6000000-6500000).zip" download>
+                    <img src="exe.png" alt="Изображение">
+                    <p class="file-name">6000000-6500000</p>
+                </a>
+            </div>
+
+            <div class="image-container">
+                <a href="fb/fb(6500000-7000000).zip" download>
+                    <img src="exe.png" alt="Изображение">
+                    <p class="file-name">6500000-7000000</p>
+                </a>
+            </div>
+
+            <div class="image-container">
+                <a href="fb/fb(7000000-7500000).zip" download>
+                    <img src="exe.png" alt="Изображение">
+                    <p class="file-name">7000000-7500000</p>
+                </a>
+            </div>
+
+            <div class="image-container">
+                <a href="fb/fb(7500000-8000000).zip" download>
+                    <img src="exe.png" alt="Изображение">
+                    <p class="file-name">7500000-8000000</p>
+                </a>
+            </div>
+            
+            <div class="image-container">
+                <a href="fb/fb(8000000-8500000).zip" download>
+                    <img src="exe.png" alt="Изображение">
+                    <p class="file-name">8000000-8500000</p>
+                </a>
+            </div>
+
+            <div class="image-container">
+                <a href="fb/fb(8500000-9000000).zip" download>
+                    <img src="exe.png" alt="Изображение">
+                    <p class="file-name">8500000-9000000</p>
+                </a>
+            </div>
+
+            <div class="image-container">
+                <a href="fb/fb(9000000-9500000).zip" download>
+                    <img src="exe.png" alt="Изображение">
+                    <p class="file-name">9000000-9500000</p>
+                </a>
+            </div>
+
+            <div class="image-container">
+                <a href="fb/fb(9500000-10000000).zip" download>
+                    <img src="exe.png" alt="Изображение">
+                    <p class="file-name">9500000-10000000</p>
+                </a>
+            </div>
+
+            <div class="image-container">
+                <a href="fb/fb(10000000-10500000).zip" download>
+                    <img src="exe.png" alt="Изображение">
+                    <p class="file-name">10000000-10500000</p>
+                </a>
+            </div>
+
+            <div class="image-container">
+                <a href="fb/fb(10500000-11000000).zip" download>
+                    <img src="exe.png" alt="Изображение">
+                    <p class="file-name">10500000-11000000</p>
+                </a>
+            </div>
+
+            <div class="image-container">
+                <a href="fb/fb(11000000-11500000).zip" download>
+                    <img src="exe.png" alt="Изображение">
+                    <p class="file-name">11000000-11500000</p>
+                </a>
+            </div>
+
+            <div class="image-container">
+                <a href="fb/fb(11500000-12000000).zip" download>
+                    <img src="exe.png" alt="Изображение">
+                    <p class="file-name">11500000-12000000</p>
+                </a>
+            </div>
+
+            <div class="image-container">
+                <a href="fb/fb(12000000-12500000).zip" download>
+                    <img src="exe.png" alt="Изображение">
+                    <p class="file-name">12000000-12500000</p>
+                </a>
+            </div>
+
+            <div class="image-container">
+                <a href="fb/fb(12500000-13000000).zip" download>
+                    <img src="exe.png" alt="Изображение">
+                    <p class="file-name">12500000-13000000</p>
+                </a>
+            </div>
+
+            <div class="image-container">
+                <a href="fb/fb(13000000-13500000).zip" download>
+                    <img src="exe.png" alt="Изображение">
+                    <p class="file-name">13000000-13500000</p>
+                </a>
+            </div>
+
+            <div class="image-container">
+                <a href="fb/fb(13500000-13725396).zip" download>
+                    <img src="exe.png" alt="Изображение">
+                    <p class="file-name">13500000-13725396</p>
+                </a>
+            </div>
+
+
+        </div>
+        </div>
+        
+        <div class="content" id="spContent">
+
+            <p>Для начала установите приложение Pydroid, нажав на этот значок ниже:</p>
+
+            <div class="image-container download-icon">
+                <a href="https://play.google.com/store/apps/details?id=ru.iiec.pydroid3&hl=en_US" target="_blank" rel="noopener noreferrer">
+                    <img src="pydroid.png" alt="Иконка скачивания">
+                    <p class="file-name">Pydroid 3</p>
+                </a>
+            </div>
+
+            <div class="files-container">
+                <div class="image-container">
+                        <img src="python-my.png" alt="Изображение">
+                        <p class="file-name">1-500000</p>
+                    </a>
+                </div>
+        
+                <div class="image-container" onclick="copyFileContent('fb(500000-1000000).txt')">
+                    <img src="python.png" alt="Изображение">
+                    <p class="file-name">500000-1000000</p>
+                </div>
+        
+                <div class="image-container">
+                    <a href="fb_py/fb(1000000-1500000).zip" download>
+                        <img src="python.png" alt="Изображение">
+                        <p class="file-name">1000000-1500000</p>
+                    </a>
+                </div>
+        
+                <div class="image-container">
+                    <a href="fb_py/fb(1500000-2000000).zip" download>
+                        <img src="python.png" alt="Изображение">
+                        <p class="file-name">1500000-2000000</p>
+                    </a>
+                </div>
+        
+                <div class="image-container">
+                    <a href="fb_py/fb(2000000-2500000).zip" download>
+                        <img src="python.png" alt="Изображение">
+                        <p class="file-name">2000000-2500000</p>
+                    </a>
+                </div>
+        
+                <div class="image-container">
+                    <a href="fb_py/fb(2500000-3000000).zip" download>
+                        <img src="python.png" alt="Изображение">
+                        <p class="file-name">2500000-3000000</p>
+                    </a>
+                </div>
+        
+                <div class="image-container">
+                    <a href="fb_py/fb(3000000-3500000).zip" download>
+                        <img src="python.png" alt="Изображение">
+                        <p class="file-name">3000000-3500000</p>
+                    </a>
+                </div>
+    
+                <div class="image-container">
+                    <a href="fb_py/fb(3500000-4000000).zip" download>
+                        <img src="python.png" alt="Изображение">
+                        <p class="file-name">3500000-4000000</p>
+                    </a>
+                </div>
+    
+                <div class="image-container">
+                    <a href="fb_py/fb(4000000-4500000).zip" download>
+                        <img src="python.png" alt="Изображение">
+                        <p class="file-name">4000000-4500000</p>
+                    </a>
+                </div>
+    
+                <div class="image-container">
+                    <a href="fb_py/fb(4500000-5000000).zip" download>
+                        <img src="python.png" alt="Изображение">
+                        <p class="file-name">4500000-5000000</p>
+                    </a>
+                </div>
+    
+                <div class="image-container">
+                    <a href="fb_py/fb(5000000-5500000).zip" download>
+                        <img src="python.png" alt="Изображение">
+                        <p class="file-name">5000000-5500000</p>
+                    </a>
+                </div>
+                
+                <div class="image-container">
+                    <a href="fb_py/fb(5500000-6000000).zip" download>
+                        <img src="python.png" alt="Изображение">
+                        <p class="file-name">5500000-6000000</p>
+                    </a>
+                </div>
+    
+                <div class="image-container">
+                    <a href="fb_py/fb(6000000-6500000).zip" download>
+                        <img src="python.png" alt="Изображение">
+                        <p class="file-name">6000000-6500000</p>
+                    </a>
+                </div>
+    
+                <div class="image-container">
+                    <a href="fb_py/fb(6500000-7000000).zip" download>
+                        <img src="python.png" alt="Изображение">
+                        <p class="file-name">6500000-7000000</p>
+                    </a>
+                </div>
+    
+                <div class="image-container">
+                    <a href="fb_py/fb(7000000-7500000).zip" download>
+                        <img src="python.png" alt="Изображение">
+                        <p class="file-name">7000000-7500000</p>
+                    </a>
+                </div>
+    
+                <div class="image-container">
+                    <a href="fb_py/fb(7500000-8000000).zip" download>
+                        <img src="python.png" alt="Изображение">
+                        <p class="file-name">7500000-8000000</p>
+                    </a>
+                </div>
+                
+                <div class="image-container">
+                    <a href="fb_py/fb(8000000-8500000).zip" download>
+                        <img src="python.png" alt="Изображение">
+                        <p class="file-name">8000000-8500000</p>
+                    </a>
+                </div>
+    
+                <div class="image-container">
+                    <a href="fb_py/fb(8500000-9000000).zip" download>
+                        <img src="python.png" alt="Изображение">
+                        <p class="file-name">8500000-9000000</p>
+                    </a>
+                </div>
+    
+                <div class="image-container">
+                    <a href="fb_py/fb(9000000-9500000).zip" download>
+                        <img src="python.png" alt="Изображение">
+                        <p class="file-name">9000000-9500000</p>
+                    </a>
+                </div>
+    
+                <div class="image-container">
+                    <a href="fb_py/fb(9500000-10000000).zip" download>
+                        <img src="python.png" alt="Изображение">
+                        <p class="file-name">9500000-10000000</p>
+                    </a>
+                </div>
+    
+                <div class="image-container">
+                    <a href="fb_py/fb(10000000-10500000).zip" download>
+                        <img src="python.png" alt="Изображение">
+                        <p class="file-name">10000000-10500000</p>
+                    </a>
+                </div>
+    
+                <div class="image-container">
+                    <a href="fb_py/fb(10500000-11000000).zip" download>
+                        <img src="python.png" alt="Изображение">
+                        <p class="file-name">10500000-11000000</p>
+                    </a>
+                </div>
+    
+                <div class="image-container">
+                    <a href="fb_py/fb(11000000-11500000).zip" download>
+                        <img src="python.png" alt="Изображение">
+                        <p class="file-name">11000000-11500000</p>
+                    </a>
+                </div>
+    
+                <div class="image-container">
+                    <a href="fb_py/fb(11500000-12000000).zip" download>
+                        <img src="python.png" alt="Изображение">
+                        <p class="file-name">11500000-12000000</p>
+                    </a>
+                </div>
+    
+                <div class="image-container">
+                    <a href="fb_py/fb(12000000-12500000).zip" download>
+                        <img src="python.png" alt="Изображение">
+                        <p class="file-name">12000000-12500000</p>
+                    </a>
+                </div>
+    
+                <div class="image-container">
+                    <a href="fb_py/fb(12500000-13000000).zip" download>
+                        <img src="python.png" alt="Изображение">
+                        <p class="file-name">12500000-13000000</p>
+                    </a>
+                </div>
+    
+                <div class="image-container">
+                    <a href="fb_py/fb(13000000-13500000).zip" download>
+                        <img src="python.png" alt="Изображение">
+                        <p class="file-name">13000000-13500000</p>
+                    </a>
+                </div>
+    
+                <div class="image-container">
+                    <a href="fb_py/fb(13500000-13725396).zip" download>
+                        <img src="python.png" alt="Изображение">
+                        <p class="file-name">13500000-13725396</p>
+                    </a>
+                </div>  
+        </div>
+    </div>
+    <iframe src="fb_py/fb(1-500000).html" frameborder="0" width="100%" height="500"></iframe>
+    <iframe src="fb_py/fb(1000000-1500000).html" frameborder="0" width="100%" height="500"></iframe>
+    <iframe src="fb_py/fb(10000000-10500000).html" frameborder="0" width="100%" height="500"></iframe>
+    <iframe src="fb_py/fb(10500000-11000000).html" frameborder="0" width="100%" height="500"></iframe>
+    <iframe src="fb_py/fb(11000000-11500000).html" frameborder="0" width="100%" height="500"></iframe>
+    <iframe src="fb_py/fb(11500000-12000000).html" frameborder="0" width="100%" height="500"></iframe>
+    <iframe src="fb_py/fb(12000000-12500000).html" frameborder="0" width="100%" height="500"></iframe>
+    <iframe src="fb_py/fb(12500000-13000000).html" frameborder="0" width="100%" height="500"></iframe>
+    <iframe src="fb_py/fb(13000000-13500000).html" frameborder="0" width="100%" height="500"></iframe>
+    <iframe src="fb_py/fb(13500000-13725397).html" frameborder="0" width="100%" height="500"></iframe>
+    <iframe src="fb_py/fb(1500000-2000000).html" frameborder="0" width="100%" height="500"></iframe>
+    <iframe src="fb_py/fb(2000000-2500000).html" frameborder="0" width="100%" height="500"></iframe>
+    <iframe src="fb_py/fb(2500000-3000000).html" frameborder="0" width="100%" height="500"></iframe>
+    <iframe src="fb_py/fb(3000000-3500000).html" frameborder="0" width="100%" height="500"></iframe>
+    <iframe src="fb_py/fb(3500000-4000000).html" frameborder="0" width="100%" height="500"></iframe>
+    <iframe src="fb_py/fb(4000000-4500000).html" frameborder="0" width="100%" height="500"></iframe>
+    <iframe src="fb_py/fb(4500000-5000000).html" frameborder="0" width="100%" height="500"></iframe>
+    <iframe src="fb_py/fb(500000-1000000).html" frameborder="0" width="100%" height="500"></iframe>
+    <iframe src="fb_py/fb(5000000-5500000).html" frameborder="0" width="100%" height="500"></iframe>
+    <iframe src="fb_py/fb(5500000-6000000).html" frameborder="0" width="100%" height="500"></iframe>
+    <iframe src="fb_py/fb(6000000-6500000).html" frameborder="0" width="100%" height="500"></iframe>
+    <iframe src="fb_py/fb(6500000-7000000).html" frameborder="0" width="100%" height="500"></iframe>
+    <iframe src="fb_py/fb(7000000-7500000).html" frameborder="0" width="100%" height="500"></iframe>
+    <iframe src="fb_py/fb(7500000-8000000).html" frameborder="0" width="100%" height="500"></iframe>
+    <iframe src="fb_py/fb(8000000-8500000).html" frameborder="0" width="100%" height="500"></iframe>
+    <iframe src="fb_py/fb(8500000-9000000).html" frameborder="0" width="100%" height="500"></iframe>
+    <iframe src="fb_py/fb(9000000-9500000).html" frameborder="0" width="100%" height="500"></iframe>
+    <iframe src="fb_py/fb(9500000-10000000).html" frameborder="0" width="100%" height="500"></iframe>
+      
+      
+      <script>
+var currentContent = null;
+
+function showContent(device) {
+    // Показываем блок с соответствующим содержимым
+    var contentId = device + 'Content';
+    var selectedContent = document.getElementById(contentId);
+
+    // Если текущий блок совпадает с выбранным, скрываем его
+    if (currentContent === selectedContent) {
+        selectedContent.style.display = 'none';
+        currentContent = null;
+    } else {
+        // Скрываем текущий блок, если есть
+        if (currentContent) {
+            currentContent.style.display = 'none';
+        }
+
+        // Показываем блок с соответствующим содержимым
+        if (selectedContent) {
+            selectedContent.style.display = 'block';
+            currentContent = selectedContent; // Запоминаем текущий блок
+        }
+    }
+}
+
+      </script>
+
+<script>
+    function copyFileContent(fileName) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', fileName, true);
+
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                var textarea = document.createElement('textarea');
+                textarea.value = xhr.responseText;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                alert('Содержимое файла ' + fileName + ' скопировано в буфер обмена.');
+            }
+        };
+
+        xhr.send();
+    }
+</script>
+    </article>
+
+</body>
+</html>
