@@ -38,7 +38,6 @@
         
         .tooltip {
             position: relative;
-            display: inline-block;
             cursor: pointer;
             color: #0026ff;
         }
@@ -58,14 +57,13 @@
             margin-left: -100px;
             opacity: 0;
             transition: opacity 0.3s;
-            font-size: 16px; /* Установите желаемый размер шрифта */
-
         }
 
         .tooltip:hover .tooltiptext {
             visibility: visible;
             opacity: 1;
         }
+
 
         .p-title {
             font-size: 20px;
@@ -96,79 +94,101 @@
         }
 
         .content {
-            display: none; /* Изначально скрываем содержимое */
+            display: none;
         }
 
 
         .files-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-}
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
 
-.image-container {
-    text-align: center;
-}
+        .image-container {
+            text-align: center;
+        }
 
-.image-container img {
-    width: auto;
-    height: 100px;
-}
+        .image-container img {
+            width: auto;
+            height: 100px;
+        }
 
-.file-name {
-    margin-top: 5px;
-}
+        .file-name {
+            margin-top: 5px;
+        }
 
-.image-container a {
-    text-decoration: none; 
-    color: #333; 
-}
+        .image-container a {
+            text-decoration: none; 
+            color: #333; 
+        }
 
-.download-icon {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 13px;
-}
+        .download-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 13px;
+        }
 
-.download-icon img {
-    width: 100px;
-    height: auto;
-}
+        .download-icon img {
+            width: 100px;
+            height: auto;
+        }
 
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-}
+        .slider-container {
+            overflow: hidden;
+            width: 100%;
+            max-width: 700px; 
+            margin: auto;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+        }
 
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-}
+        .slider-wrapper {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
 
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-}
+        .slider-wrapper img {
+            width: 100%;
+            height: auto;
+        }
 
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-}
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .description {
+            text-align: left;
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
       
     </style>
+
+<script type="text/javascript">
+if (screen.width <= 480) {
+window.location = "file:///C:/Users/Dmitriy.DESKTOP-H28FQN8/Desktop/fb_s/index-mobile.html";
+}
+</script>
 </head>
 <body>
 
@@ -177,6 +197,8 @@
     </header>
 
     <article>
+
+        
         <p>
             Доброго времени суток. Я знаю, что в целом вам и нахер не сдались все эти трудности и вы просто хотите прочитать продолжение, но всё же. 
             Я не буду вас заставлять проходить свои игры, или участвовать в каких-то квестах. 
@@ -237,7 +259,7 @@
         <div class="content" id="pcContent">
         <p>
             Выберите блок с диапазоном работ, который вы будете скачивать. Пожалуйста, не смущайтесь, если у всех вариантов уже есть один или несколько голосов, 
-            так как многие могут просто скачивать и забивать. Просто выберите вариант с найменьшим числом голосов. 
+            так как многие могут просто скачивать и забивать. Просто выберите вариант с найменьшим числом голосов и скачайте архив с файлами в нужную папку. 
         </p>
 
         <div class="files-container">
@@ -438,11 +460,24 @@
 
 
         </div>
+ 
+        <p>Скачали? Отлично! Теперь распакуйте архив в отдельную папку. Затем выберите папку dist. Откройте единственный exe файл в папке. Если открылась командная сторка и начали появляться
+           строчки о успешном сохранении работы и ошибках 404, значит, всё работает!
+        </p>    
+        
+        <img src="1_.png" alt="" style="margin-left: auto; margin-right: auto;">
+        <p>Какие-то антивирусники (как мой) могут ругаться на то, что программа пытается изменить файл last_processed_fic_id.txt. Просто разрешаем приложение сворачиваем командную строку.</p>
         </div>
         
         <div class="content" id="spContent">
 
-            <p>Для начала установите приложение Pydroid, нажав на этот значок ниже:</p>
+            <p>
+                Выберите блок с диапазоном работ, который вы будете скачивать. Пожалуйста, не смущайтесь, если у всех вариантов уже есть один или несколько голосов, 
+                так как многие могут просто скачивать и забивать. Просто выберите вариант с найменьшим числом голосов. Пока не нажимайте на значки, так как они копируют код в ваш буфер обмена, 
+                а вам ещё предстоит кое-что туда скопировать. Так что просто выберите и запимните первое число в диапазлне.
+            </p>
+
+            <p>Установите приложение Pydroid, нажав на этот значок ниже:</p>
 
             <div class="image-container download-icon">
                 <a href="https://play.google.com/store/apps/details?id=ru.iiec.pydroid3&hl=en_US" target="_blank" rel="noopener noreferrer">
@@ -450,6 +485,41 @@
                     <p class="file-name">Pydroid 3</p>
                 </a>
             </div>
+
+            <p>Скачали? Отлично! Теперь открывайте приложение и следуйте инструкции ниже:</p>
+
+            <div class="slider-container">
+                <div class="slider-wrapper" id="gallery1">
+                    <img src="1.PNG">
+                    <img src="2.PNG">
+                    <img src="3.PNG">
+                    <img src="4.PNG">
+                    <img src="5.PNG">
+                    <img src="6.PNG">
+                    <img src="7.PNG">
+                    <img src="8.PNG">
+                    <img src="9.PNG">
+                    <img src="10.PNG">
+                    <img src="11.PNG">
+                    <img src="12.PNG">
+                    <img src="13.PNG">
+                    <img src="14.PNG">
+                    <img src="15.PNG">
+                    <img src="16.PNG">
+                    <img src="17.PNG">
+                </div>
+            
+                <div class="controls">
+                    <button id="prevBtn1">Назад</button>
+                    <button id="nextBtn1">Вперед</button>
+                </div>
+            
+                <div class="description" id="description1">
+                    <p>1. Такие окошки открываются только перед первым открытием Pydroid. При дальнейших открытиях такого больше не будет. Здесь нажимаем единственную кнопку - Let`s Start.</p>
+                </div>
+            </div>
+            <button id="copyButton" style="display: none; margin-left: auto; margin-right: auto; margin-top: 10px;">Cкопировать текст</button>
+
 
             <div class="files-container">
                 <div class="image-container">
@@ -595,13 +665,13 @@
                     <p class="file-name">13000000-13500000</p>
                 </div>
                 
-                <div class="image-container" onclick="copyFileContent('fb_txt/fb(13500000-13725397).txt')">
+                <div class="image-container" onclick="copyFileContent('fb_txt/fb(13500000-13725396).txt')">
                     <img src="python.png" alt="Изображение">
                     <p class="file-name">13500000-13725396</p>
                 </div>
+                </div>
 
-                
-        </div>
+        
     </div>
       
       
@@ -609,24 +679,20 @@
 var currentContent = null;
 
 function showContent(device) {
-    // Показываем блок с соответствующим содержимым
     var contentId = device + 'Content';
     var selectedContent = document.getElementById(contentId);
 
-    // Если текущий блок совпадает с выбранным, скрываем его
     if (currentContent === selectedContent) {
         selectedContent.style.display = 'none';
         currentContent = null;
     } else {
-        // Скрываем текущий блок, если есть
         if (currentContent) {
             currentContent.style.display = 'none';
         }
 
-        // Показываем блок с соответствующим содержимым
         if (selectedContent) {
             selectedContent.style.display = 'block';
-            currentContent = selectedContent; // Запоминаем текущий блок
+            currentContent = selectedContent; 
         }
     }
 }
@@ -652,6 +718,90 @@ function showContent(device) {
 
         xhr.send();
     }
+</script>
+
+<script>
+ document.addEventListener("DOMContentLoaded", function () {
+        const gallery1 = {
+            sliderWrapper: document.getElementById("gallery1"),
+            prevBtn: document.getElementById("prevBtn1"),
+            nextBtn: document.getElementById("nextBtn1"),
+            description: document.getElementById("description1"),
+            copyButton: document.getElementById("copyButton"),
+            currentIndex: 0,
+            totalImages: 0
+        };
+
+        initializeGallery(gallery1);
+
+        function initializeGallery(gallery) {
+            gallery.totalImages = gallery.sliderWrapper.querySelectorAll("img").length;
+
+            gallery.prevBtn.addEventListener("click", function () {
+                prevSlide(gallery);
+            });
+
+            gallery.nextBtn.addEventListener("click", function () {
+                nextSlide(gallery);
+            });
+
+            updateDescription(gallery);
+        }
+
+        function showSlide(gallery) {
+            const offset = -gallery.currentIndex * 100 + "%";
+            gallery.sliderWrapper.style.transform = "translateX(" + offset + ")";
+            updateDescription(gallery);
+            checkShowCopyButton(gallery);
+        }
+
+        function nextSlide(gallery) {
+            gallery.currentIndex = (gallery.currentIndex + 1) % gallery.totalImages;
+            showSlide(gallery);
+        }
+
+        function prevSlide(gallery) {
+            gallery.currentIndex = (gallery.currentIndex - 1 + gallery.totalImages) % gallery.totalImages;
+            showSlide(gallery);
+        }
+
+        function updateDescription(gallery) {
+            const descriptions = [
+                "1. Такие окошки открываются только перед первым открытием Pydroid. При дальнейших открытиях такого больше не будет. Здесь нажимаем единственную кнопку - Let`s Start.",
+                "2. Дальше будет небольшой опрос, где необязательно что-либо выбирать, так как он ни на что не повлияет. Просто жмём Continue.",
+                "3. Нажимаем первый переключатель. Второй отвечает за установку тёмной темы. Включать или не включать - выбор на ваш вкус. Третий переключатель не трогаем и жмём Continue.",
+                "4. Просто предлагают премиум подписку. Жмём крестик в правом верхнем углу.",
+                "5. Вам предлагают показывать либо таргетированную, либо не таргетированную рекламу. В целом выбирать вам, но лично я выбрал \"No\". Не жмите на третью кнопку.",
+                "6. Теперь, когда мы зашли в приложение, нам нужно прописать id работы, с которой надо начать парсинг. В данном случае я прописал 500000 (вы тоже можете прописать 500000, так как я уже забил интервал 1-500000, а 500000-1000000 выбрал для примера). Затем мы нажимаем на папочку в левом верхнем углу и нажимаем на Save as.",
+                "7. Выбираем \"Home, removed on uninstall\" (либо другой пункт, если вы знаете, что делаете).",
+                "8. Сохраняем файл как last_processed_fic_id.txt. Просто нажмите на кнопку \"Скопировать текст\" под этим текстом, чтобы скопировкать названик файла в буфер обмена. ", 
+                "9. Теперь нам надо вставить код ранее выбранного интервала. Скопируйте код в буфер обмена, нажав на значок с ранее выбранным интервалом. Затем сохраните его, нажав на Save as.",
+                "10. Перейдите в папку, где мы сохранили last_processed_fic_id.txt. Называем любым латинским названием, но обязательно с расширением \".py\".",
+                "11. Не волнуйтесь, осталось совсем немного. Теперь нужно установить две библиотеки - requests и BeautifulSoup (это делается очень просто). Сначала копируем в файле слово \"requests\". Затем нажимаем на три горизонтальных полоски в правом верхнем углу. Повторяем тоже самое, чтобы установить BeautifulSoup.",
+                "12. Нажимаем на Pip.",
+                "13. Вставляем скопированное слово в текстовую строку и нажимаем на кнопку Install.",
+                "14. Теперь осталось только нажать на круглую жёлтую кнопку в левом нижнем углу.",
+                "15. Вуаля - заработало! Теперь можно свернуть приложение, нажав на горизонтальную полоску в левом верхнем углу, чтобы код выполнялся на фоне и вы могли заняться своими делами.",
+                "16. Этот значок указывает на то, что приложение работает в фоновом режиме.",
+                "17. Если значок через время пропал, это значит, что нужно заново открыть файл через кнопку Open и запустить код на жёлтую кнопку. Конец инструкции."
+                ];
+            gallery.description.innerText = descriptions[gallery.currentIndex];
+        }
+
+        function checkShowCopyButton(gallery) {
+            if (gallery.currentIndex === 7) {
+                gallery.copyButton.style.display = "block";
+                gallery.copyButton.addEventListener("click", function () {
+                    const textToCopy = "last_processed_fic_id.txt";
+                    navigator.clipboard.writeText(textToCopy)
+                        .then(() => alert('Текст скопирован в буфер обмена'))
+                        .catch(err => console.error('Ошибка копирования', err));
+                });
+            } else {
+                gallery.copyButton.style.display = "none";
+            }
+        }
+    });
 </script>
     </article>
 
