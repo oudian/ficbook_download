@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Фикбук в каждом доме</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        article {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 24px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        p {
+            color: #555;
+        }
+        
+        .tooltip {
+            position: relative;
+            cursor: pointer;
+            color: #0026ff;
+        }
+
+        .tooltiptext {
+            font-size: 30px;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+
+        .p-title {
+            font-size: 20px;
+            color: black;
+        }
+
+        .p-title-1 {
+            font-size: 25px;
+            color: black;
+            text-align: center;
+            
+        }
+
+        .center-images {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .center-images img {
+            margin: 0 50px; 
+            width: 300px; 
+        }
+
+        .caption {
+            font-family: Arial, sans-serif;
+            font-size: 30px;
+        }
+
+        .content {
+            display: none;
+        }
+
+
+        .files-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .image-container {
+            text-align: center;
+        }
+
+        .image-container img {
+            width: auto;
+            height: 100px;
+        }
+
+        .file-name {
+            margin-top: 5px;
+            font-size: 13px;
+        }
+
+        file-name-pydroid {
+            font-size: 20px;
+        }
+
+        .image-container a {
+            text-decoration: none; 
+            color: #333; 
+        }
+
+        .download-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 30px;
+        }
+
+        .download-icon img {
+            width: 200px;
+            height: auto;
+        }
+
+        .slider-container {
+            overflow: hidden;
+            width: 100%;
+            max-width: 700px; 
+            margin: auto;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+        }
+
+        .slider-wrapper {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slider-wrapper img {
+            width: 100%;
+            height: auto;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 25px;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .description {
+            text-align: left;
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
+            font-size: 30px;
+        }
+
+        #fullscreenOverlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        #fullscreenImage {
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .download-counter {
+            position: relative;
+            font-size: 30px;
+            font-family: 'Arial Black', sans-serif;
+            color: rgb(47, 52, 75);
+        }
+
+      
+    </style>
+
+
+</head>
+<body>
+
+    <header>
+        <h1>Фикбук в каждый дом!<br>Спасём наши работы!</h1>
+    </header>
+
+    <article>
+
+        
+        <p>
+            Доброго времени суток. Я знаю, что в целом вам и нахер не сдались все эти трудности и вы просто хотите прочитать продолжение, но всё же. 
+            Я не буду вас заставлять проходить свои игры, или участвовать в каких-то квестах. 
+            На этот раз вам нужно просто прочитать о моём небольшом проекте, попутно собирая цифры, чтобы в конце получить пароль для доступа к проде. 
+            Просто небольшая хитрость, чтобы никто не проматывал.
+        </p>
+        <p>
+            P.s: <span class="tooltip">Синим<span class="tooltiptext">Да-да, именно так.</span></span> помечен текст, после нажатия на который открывается пояснение к слову.
+        </p>
+        <p>
+            Не буду отнимать у вас много времени и сразу же перейду к сути: я хочу скачать все работы с фикбука, и для этого мне нужна ваша помощь. 
+            Точнее, все работы с 23 июня 2009 года по 25 июля 2023 года. То есть все работы по <a href="https://ficbook.net/readfic/13725396">эту</a>.
+        </p> 
+
+            <p class="p-title">Почему именно по это число?</p> 
+
+        <p>
+            Дело в том, что с этого дня, как некоторые могли заметить, фикбук начал выдавать работам id в формате 
+            <span class="tooltip">UUID<span class="tooltiptext">то есть, что-то вроде: dfg010b7-2as1-4c48-b426-0f17a6b3b409</span></span>. 
+            Для моей цели это не есть хорошо, так как очень сильно затрудняет <span class="tooltip">скрапинг<span class="tooltiptext">Скрапинг (или веб-скрапинг) - это процесс автоматического извлечения данных с веб-страниц.</span></span>.
+            То есть, не получится скачать все работы банальным перебором ссылок с 1 по текущую работу, а только по 13725396.
+        </p> 
+
+        <p class="p-title">Чем вы можете мне помочь?</p>
+
+        <p>
+            Всё очень просто. Скачайте на своё устройство мой веб-скрапер, который всё сделает автоматически. 
+            Если я буду делать это один, то даже в самом лучшем случае процесс займёт минимум год. Для самого быстрого результата мне потребуется ещё 27 человек. 
+            На данный момент, я дошёл до номера 133665, а это чуть меньше процента. И делал я это несколько дней без перерывов. Скачивать работы можно как с компьютера, так и с телефона.
+        </p>
+
+        <p class="p-title">Зачем мне это?<p>
+
+        <p>
+            У меня есть небеспочвенные подозрения о том, что вскоре фикбук может скоропостижно сгинуть. 
+            Как вы давно заметили, законы РФ начали очень сильно его душить. Несмотря на то, что OOO фикбука зарегистрировано в Латвии 
+            (там же, где и располагаются сервера нашего любимого сайта), фикбук обязан ориентироваться на законы данной страны, 
+            так как основная масса читателей (70%) находится именно там. Так вот. Есть огромный шанс, что в случае блокировки сайта на территории РФ он благополучно схлопнется, 
+            и в итоге миллионы фанфиков, которые когда-либо были написаны и опубликованы исключительно на данном ресурсе, просто уйдут в небытие. Я давно об этом подозревал, 
+            но недавний релиз исключительно англоязычного сайта fic.fan только подкрепил мои подозрения. Я очень сомневаюсь, 
+            что при закрытии сайта кто-то из администрации озаботится бэкапом работ с базы данных для их дальнейшей публикации, 
+            так как и в лучшие времена администрация сайта всегда наплевательски относилась за их сохранность. 
+            В конце концов, из 133665 просканированных страниц было успешно скачано только 47182. То есть, 86483 были попросту удалены по тем или иным причинам. А это 65% от общего числа.
+        </p>
+        <p class="p-title-1">Как можно скачать скрапер?</p>
+        <br><p>Для начала выберете устройство, на который вы хотите установить скрапер:</p><br>
+
+        <div class="center-images">
+            <div class="device" onclick="showContent('pc')">
+                <img src="computer.png" alt="Компьютер">
+                <p class="caption">Компьютер</p>
+            </div>
+            <div class="device" onclick="showContent('sp')">
+                <img src="smartphone.png" alt="Смартфон">
+                <p class="caption">Смартфон</p>
+            </div>
+        </div>
+        <div class="content" id="pcContent">
+        <p>
+            Выберите блок с диапазоном работ, который вы будете скачивать. Пожалуйста, не смущайтесь, если у всех вариантов уже есть один или несколько голосов, 
+            так как многие могут просто скачивать и забивать. Просто выберите вариант с найменьшим числом голосов и скачайте архив с файлами в нужную папку. 
+        </p>
+
+        <div class="files-container">
+            <div class="image-container">
+                <img src="exe-my.png" alt="Изображение">
+                <p class="file-name">1-500000</p>
+            </a>
+            <span style="position: relative; font-size: 30px; font-family: 'Arial Black', sans-serif; color: rgb(47, 52, 75);">1</span>
+        </div>
+
+        <div class="image-container">
+            <a href="fb/fb(500000-1000000).zip" download>
+                <img src="exe.png" alt="Изображение">
+                <p class="file-name">500000-1000000</p>
+            </a>
+            <span class="download-counter" id="counter500000-1000000">0</span>
+        </div>
+
+       <div class="image-container">
+            <a href="fb/fb(1000000-1500000).zip" download>
+                <img src="exe.png" alt="Изображение">
+                <p class="file-name">1000000-1500000</p>
+            </a>
+            <span class="download-counter" id="counter1000000-1500000">0</span>
+        </div>
+
+        <div class="image-container">
+            <a href="fb/fb(1500000-2000000).zip" download>
+                <img src="exe.png" alt="Изображение">
+                <p class="file-name">1500000-2000000</p>
+            </a>
+            <span class="download-counter" id="counter1500000-2000000">0</span>
+        </div>
+
+        <div class="image-container">
+            <a href="fb/fb(2000000-2500000).zip" download>
+                <img src="exe.png" alt="Изображение">
+                <p class="file-name">2000000-2500000</p>
+            </a>
+            <span class="download-counter" id="counter2000000-2500000">0</span>
+        </div>
+
+        <div class="image-container">
+            <a href="fb/fb(2500000-3000000).zip" download>
+                <img src="exe.png" alt="Изображение">
+                <p class="file-name">2500000-3000000</p>
+            </a>
+            <span class="download-counter" id="counter2500000-3000000">0</span>
+        </div>
+
+        <div class="image-container">
+            <a href="fb/fb(3000000-3500000).zip" download>
+                <img src="exe.png" alt="Изображение">
+                <p class="file-name">3000000-3500000</p>
+            </a>
+            <span class="download-counter" id="counter3000000-3500000">0</span>
+        </div>
+
+        <div class="image-container">
+            <a href="fb/fb(3500000-4000000).zip" download>
+                <img src="exe.png" alt="Изображение">
+                <p class="file-name">3500000-4000000</p>
+            </a>
+            <span class="download-counter" id="counter3500000-4000000">0</span>
+        </div>
+
+        <div class="image-container">
+            <a href="fb/fb(4000000-4500000).zip" download>
+                <img src="exe.png" alt="Изображение">
+                <p class="file-name">4000000-4500000</p>
+            </a>
+            <span class="download-counter" id="counter4000000-4500000">0</span>
+        </div>
+
+        <div class="image-container">
+            <a href="fb/fb(4500000-5000000).zip" download>
+                <img src="exe.png" alt="Изображение">
+                <p class="file-name">4500000-5000000</p>
+            </a>
+            <span class="download-counter" id="counter4500000-5000000">0</span>
+        </div>
+
+        <div class="image-container">
+            <a href="fb/fb(5000000-5500000).zip" download>
+                <img src="exe.png" alt="Изображение">
+                <p class="file-name">5000000-5500000</p>
+            </a>
+            <span class="download-counter" id="counter5000000-5500000">0</span>
+        </div>
+        
+        <div class="image-container">
+            <a href="fb/fb(5500000-6000000).zip" download>
+                <img src="exe.png" alt="Изображение">
+                <p class="file-name">5500000-6000000</p>
+            </a>
+            <span class="download-counter" id="counter5500000-6000000">0</span>
+        </div>
+
+        <div class="image-container">
+            <a href="fb/fb(6000000-6500000).zip" download>
+                <img src="exe.png" alt="Изображение">
+                <p class="file-name">6000000-6500000</p>
+            </a>
+            <span class="download-counter" id="counter6000000-6500000">0</span>
+        </div>
+
+        <div class="image-container">
+            <a href="fb/fb(6500000-7000000).zip" download>
+                <img src="exe.png" alt="Изображение">
+                <p class="file-name">6500000-7000000</p>
+            </a>
+            <span class="download-counter" id="counter6500000-7000000">0</span>
+        </div>
+
+        <div class="image-container">
+            <a href="fb/fb(7000000-7500000).zip" download>
+                <img src="exe.png" alt="Изображение">
+                <p class="file-name">7000000-7500000</p>
+            </a>
+            <span class="download-counter" id="counter7000000-7500000">0</span>
+        </div>
+
+        <div class="image-container">
+            <a href="fb/fb(7500000-8000000).zip" download>
+                <img src="exe.png" alt="Изображение">
+                <p class="file-name">7500000-8000000</p>
+            </a>
+            <span class="download-counter" id="counter7500000-8000000">0</span>
+        </div>
+        
+        <div class="image-container">
+            <a href="fb/fb(8000000-8500000).zip" download>
+                <img src="exe.png" alt="Изображение">
+                <p class="file-name">8000000-8500000</p>
+            </a>
+            <span class="download-counter" id="counter8000000-8500000">0</span>
+        </div>
+
+        <div class="image-container">
+            <a href="fb/fb(8500000-9000000).zip" download>
+                <img src="exe.png" alt="Изображение">
+                <p class="file-name">8500000-9000000</p>
+            </a>
+            <span class="download-counter" id="counter8500000-9000000">0</span>
+        </div>
+
+        <div class="image-container">
+            <a href="fb/fb(9000000-9500000).zip" download>
+                <img src="exe.png" alt="Изображение">
+                <p class="file-name">9000000-9500000</p>
+            </a>
+            <span class="download-counter" id="counter9000000-9500000">0</span>
+        </div>
+
+        <div class="image-container">
+            <a href="fb/fb(9500000-10000000).zip" download>
+                <img src="exe.png" alt="Изображение">
+                <p class="file-name">9500000-10000000</p>
+            </a>
+            <span class="download-counter" id="counter9500000-10000000">0</span>
+        </div>
+
+        <div class="image-container">
+            <a href="fb/fb(10000000-10500000).zip" download>
+                <img src="exe.png" alt="Изображение">
+                <p class="file-name">10000000-10500000</p>
+            </a>
+            <span class="download-counter" id="counter10000000-10500000">0</span>
+        </div>
+
+        <div class="image-container">
+            <a href="fb/fb(10500000-11000000).zip" download>
+                <img src="exe.png" alt="Изображение">
+                <p class="file-name">10500000-11000000</p>
+            </a>
+            <span class="download-counter" id="counter10500000-11000000">0</span>
+        </div>
+
+        <div class="image-container">
+            <a href="fb/fb(11000000-11500000).zip" download>
+                <img src="exe.png" alt="Изображение">
+                <p class="file-name">11000000-11500000</p>
+            </a>
+            <span class="download-counter" id="counter11000000-11500000">0</span>
+        </div>
+
+        <div class="image-container">
+            <a href="fb/fb(11500000-12000000).zip" download>
+                <img src="exe.png" alt="Изображение">
+                <p class="file-name">11500000-12000000</p>
+            </a>
+            <span class="download-counter" id="counter11500000-12000000">0</span>
+        </div>
+
+        <div class="image-container">
+            <a href="fb/fb(12000000-12500000).zip" download>
+                <img src="exe.png" alt="Изображение">
+                <p class="file-name">12000000-12500000</p>
+            </a>
+            <span class="download-counter" id="counter12000000-12500000">0</span>
+        </div>
+
+        <div class="image-container">
+            <a href="fb/fb(12500000-13000000).zip" download>
+                <img src="exe.png" alt="Изображение">
+                <p class="file-name">12500000-13000000</p>
+            </a>
+            <span class="download-counter" id="counter12500000-13000000">0</span>
+        </div>
+
+        <div class="image-container">
+            <a href="fb/fb(13000000-13500000).zip" download>
+                <img src="exe.png" alt="Изображение">
+                <p class="file-name">13000000-13500000</p>
+            </a>
+            <span class="download-counter" id="counter13000000-13500000">0</span>
+        </div>
+
+        <div class="image-container">
+            <a href="fb/fb(13500000-13725396).zip" download>
+                <img src="exe.png" alt="Изображение">
+                <p class="file-name">13500000-13725396</p>
+            </a>
+            <span class="download-counter" id="counter13500000-13725396">0</span>
+        </div>
+
+
+        </div>
+ 
+        <p>Скачали? Отлично! Теперь распакуйте архив в отдельную папку. Затем выберите папку dist. Откройте единственный exe файл в папке. Если открылась командная сторка и начали появляться
+           строчки о успешном сохранении работы и ошибках 404, значит, всё работает!
+        </p>    
+        
+        <center><img src="ant.png" width="700"></center>
+        <p>Какие-то антивирусники (как мой) могут ругаться на то, что программа пытается изменить файл last_processed_fic_id.txt. Просто разрешаем приложение сворачиваем командную строку.</p>
+        </div>
+        
+        <div class="content" id="spContent">
+
+            <p>
+                Выберите блок с диапазоном работ, который вы будете скачивать. Пожалуйста, не смущайтесь, если у всех вариантов уже есть один или несколько голосов, 
+                так как многие могут просто скачивать и забивать. Просто выберите вариант с найменьшим числом голосов. Пока не нажимайте на значки, так как они копируют код в ваш буфер обмена, 
+                а вам ещё предстоит кое-что туда скопировать. Так что просто выберите и запимните первое число в диапазлне.
+            </p>
+
+            <p>Установите приложение Pydroid, нажав на этот значок ниже:</p>
+
+            <div class="image-container download-icon">
+                <a href="https://play.google.com/store/apps/details?id=ru.iiec.pydroid3&hl=en_US" target="_blank" rel="noopener noreferrer">
+                    <img src="pydroid.png" alt="Иконка скачивания">
+                    <p class="file-name-pydroid">Pydroid 3</p>
+                </a>
+            </div>
+
+            <p>Скачали? Отлично! Теперь открывайте приложение и следуйте инструкции ниже:</p>
+
+            <div class="slider-container">
+                <div class="slider-wrapper" id="gallery1">
+                    <img src="1.PNG">
+                    <img src="2.PNG">
+                    <img src="3.PNG">
+                    <img src="4.PNG">
+                    <img src="5.PNG">
+                    <img src="6.PNG">
+                    <img src="7.PNG">
+                    <img src="8.PNG">
+                    <img src="9.PNG">
+                    <img src="10.PNG">
+                    <img src="11.PNG">
+                    <img src="12.PNG">
+                    <img src="13.PNG">
+                    <img src="14.PNG">
+                    <img src="15.PNG">
+                    <img src="16.PNG">
+                    <img src="17.PNG">
+                </div>
+            
+                <div class="controls">
+                    <button id="prevBtn1">Назад</button>
+                    <button id="nextBtn1">Вперед</button>
+                </div>
+            
+                <div class="description" id="description1">
+                    <p>1. Такие окошки открываются только перед первым открытием Pydroid. При дальнейших открытиях такого больше не будет. Здесь нажимаем единственную кнопку - Let`s Start.</p>
+                </div>
+            </div>
+            <button id="copyButton" style="display: none; margin-left: auto; margin-right: auto; margin-top: 10px;">Cкопировать текст</button>
+
+            <div id="fullscreenOverlay">
+                <img id="fullscreenImage" src="" alt="Fullscreen Image">
+            </div>
+
+            <div class="files-container">
+                <div class="image-container">
+                    <img src="python-my.png" alt="Изображение">
+                    <p class="file-name">1-500000</p>
+                <span style="position: relative; font-size: 30px; font-family: 'Arial Black', sans-serif; color: rgb(47, 52, 75);">1</span>
+            </div>
+
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(500000-1000000).txt')">
+                    <img src="python.png" alt="Изображение">
+                    <p class="file-name">500000-1000000</p>
+                    <span class="download-counter" id="counter500000-1000000">0</span>
+            </div>
+
+                <div class="image-container" onclick="copyFileContent('fb_txt/fb(1000000-1500000).txt')">
+                    <img src="python.png" alt="Изображение">
+                    <p class="file-name">1000000-1500000</p>
+                <span class="download-counter" id="counter1000000-1500000">0</span>
+            </div>
+    
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(1500000-2000000).txt')">
+                    <img src="python.png" alt="Изображение">
+                    <p class="file-name">1500000-2000000</p>
+                <span class="download-counter" id="counter1500000-2000000">0</span>
+            </div>
+    
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(2000000-2500000).txt')">
+                    <img src="python.png" alt="Изображение">
+                    <p class="file-name">2000000-2500000</p>
+                <span class="download-counter" id="counter2000000-2500000">0</span>
+            </div>
+    
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(2500000-3000000).txt')">
+                    <img src="python.png" alt="Изображение">
+                    <p class="file-name">2500000-3000000</p>
+                <span class="download-counter" id="counter2500000-3000000">0</span>
+            </div>
+    
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(3000000-3500000).txt')">
+                    <img src="python.png" alt="Изображение">
+                    <p class="file-name">3000000-3500000</p>
+                <span class="download-counter" id="counter3000000-3500000">0</span>
+            </div>
+
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(3500000-4000000).txt')">
+                    <img src="python.png" alt="Изображение">
+                    <p class="file-name">3500000-4000000</p>
+                <span class="download-counter" id="counter3500000-4000000">0</span>
+            </div>
+
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(4000000-4500000).txt')">
+                    <img src="python.png" alt="Изображение">
+                    <p class="file-name">4000000-4500000</p>
+                <span class="download-counter" id="counter4000000-4500000">0</span>
+            </div>
+
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(4500000-5000000).txt')">
+                <img src="python.png" alt="Изображение">
+                <p class="file-name">4500000-5000000</p>
+                <span class="download-counter" id="counter4500000-5000000">0</span>
+            </div>
+            
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(5000000-5500000).txt')">
+                <img src="python.png" alt="Изображение">
+                <p class="file-name">5000000-5500000</p>
+                <span class="download-counter" id="counter5000000-5500000">0</span>
+            </div>
+            
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(5500000-6000000).txt')">
+                <img src="python.png" alt="Изображение">
+                <p class="file-name">5500000-6000000</p>
+                <span class="download-counter" id="counter5500000-6000000">0</span>
+            </div>
+            
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(6000000-6500000).txt')">
+                <img src="python.png" alt="Изображение">
+                <p class="file-name">6000000-6500000</p>
+                <span class="download-counter" id="counter6000000-6500000">0</span>
+            </div>
+            
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(6500000-7000000).txt')">
+                <img src="python.png" alt="Изображение">
+                <p class="file-name">6500000-7000000</p>
+                <span class="download-counter" id="counter6500000-7000000">0</span>
+            </div>
+            
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(7000000-7500000).txt')">
+                <img src="python.png" alt="Изображение">
+                <p class="file-name">7000000-7500000</p>
+                <span class="download-counter" id="counter7000000-7500000">0</span>
+            </div>
+            
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(7500000-8000000).txt')">
+                <img src="python.png" alt="Изображение">
+                <p class="file-name">7500000-8000000</p>
+                <span class="download-counter" id="counter7500000-8000000">0</span>
+            </div>
+            
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(8000000-8500000).txt')">
+                <img src="python.png" alt="Изображение">
+                <p class="file-name">8000000-8500000</p>
+                <span class="download-counter" id="counter8000000-8500000">0</span>
+            </div>
+            
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(8500000-9000000).txt')">
+                <img src="python.png" alt="Изображение">
+                <p class="file-name">8500000-9000000</p>
+                <span class="download-counter" id="counter8500000-9000000">0</span>
+            </div>
+            
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(9000000-9500000).txt')">
+                <img src="python.png" alt="Изображение">
+                <p class="file-name">9000000-9500000</p>
+                <span class="download-counter" id="counter9000000-9500000">0</span>
+            </div>
+            
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(9500000-10000000).txt')">
+                <img src="python.png" alt="Изображение">
+                <p class="file-name">9500000-10000000</p>
+                <span class="download-counter" id="counter9500000-10000000">0</span>
+            </div>
+            
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(10000000-10500000).txt')">
+                <img src="python.png" alt="Изображение">
+                <p class="file-name">10000000-10500000</p>
+                <span class="download-counter" id="counter10000000-10500000">0</span>
+            </div>
+            
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(10500000-11000000).txt')">
+                <img src="python.png" alt="Изображение">
+                <p class="file-name">10500000-11000000</p>
+                <span class="download-counter" id="counter10500000-11000000">0</span>
+            </div>
+            
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(11000000-11500000).txt')">
+                <img src="python.png" alt="Изображение">
+                <p class="file-name">11000000-11500000</p>
+                <span class="download-counter" id="counter11000000-11500000">0</span>
+            </div>
+            
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(11500000-12000000).txt')">
+                <img src="python.png" alt="Изображение">
+                <p class="file-name">11500000-12000000</p>
+                <span class="download-counter" id="counter11500000-12000000">0</span>
+            </div>
+            
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(12000000-12500000).txt')">
+                <img src="python.png" alt="Изображение">
+                <p class="file-name">12000000-12500000</p>
+                <span class="download-counter" id="counter12000000-12500000">0</span>
+            </div>
+
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(12500000-13000000).txt')">
+                <img src="python.png" alt="Изображение">
+                <p class="file-name">12500000-13000000</p>
+                <span class="download-counter" id="counter12500000-13000000">0</span>
+            </div>
+            
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(13000000-13500000).txt')">
+                <img src="python.png" alt="Изображение">
+                <p class="file-name">13000000-13500000</p>
+                <span class="download-counter" id="counter13000000-13500000">0</span>
+            </div>
+            
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(13500000-13725396).txt')">
+                <img src="python.png" alt="Изображение">
+                <p class="file-name">13500000-13725396</p>
+                <span class="download-counter" id="counter13500000-13725396">0</span>
+            </div>
+                </div>
+
+        
+    </div>
+      
+      
+      <script>
+var currentContent = null;
+
+function showContent(device) {
+    var contentId = device + 'Content';
+    var selectedContent = document.getElementById(contentId);
+
+    if (currentContent === selectedContent) {
+        selectedContent.style.display = 'none';
+        currentContent = null;
+    } else {
+        if (currentContent) {
+            currentContent.style.display = 'none';
+        }
+
+        if (selectedContent) {
+            selectedContent.style.display = 'block';
+            currentContent = selectedContent; 
+        }
+    }
+}
+
+      </script>
+
+<script>
+    function copyFileContent(fileName) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', fileName, true);
+
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                var textarea = document.createElement('textarea');
+                textarea.value = xhr.responseText;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                alert('Содержимое файла ' + fileName + ' скопировано в буфер обмена.');
+            }
+        };
+
+        xhr.send();
+    }
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const gallery1 = {
+            sliderWrapper: document.getElementById("gallery1"),
+            prevBtn: document.getElementById("prevBtn1"),
+            nextBtn: document.getElementById("nextBtn1"),
+            description: document.getElementById("description1"),
+            copyButton: document.getElementById("copyButton"),
+            fullscreenOverlay: document.getElementById("fullscreenOverlay"),
+            fullscreenImage: document.getElementById("fullscreenImage"),
+            currentIndex: 0,
+            totalImages: 0
+        };
+
+        initializeGallery(gallery1);
+
+        function initializeGallery(gallery) {
+            gallery.totalImages = gallery.sliderWrapper.querySelectorAll("img").length;
+
+            gallery.prevBtn.addEventListener("click", function () {
+                prevSlide(gallery);
+            });
+
+            gallery.nextBtn.addEventListener("click", function () {
+                nextSlide(gallery);
+            });
+
+            updateDescription(gallery);
+
+            gallery.sliderWrapper.addEventListener("click", function (event) {
+                if (event.target.tagName === "IMG") {
+                    openFullscreen(gallery, event.target.src);
+                }
+            });
+
+            gallery.fullscreenOverlay.addEventListener("click", function () {
+                closeFullscreen(gallery);
+            });
+        }
+
+        function showSlide(gallery) {
+            const offset = -gallery.currentIndex * 100 + "%";
+            gallery.sliderWrapper.style.transform = "translateX(" + offset + ")";
+            updateDescription(gallery);
+            checkShowCopyButton(gallery);
+        }
+
+        function nextSlide(gallery) {
+            gallery.currentIndex = (gallery.currentIndex + 1) % gallery.totalImages;
+            showSlide(gallery);
+        }
+
+        function prevSlide(gallery) {
+            gallery.currentIndex = (gallery.currentIndex - 1 + gallery.totalImages) % gallery.totalImages;
+            showSlide(gallery);
+        }
+
+        function updateDescription(gallery) {
+            const descriptions = [
+                "1. Такие окошки открываются только перед первым открытием Pydroid. При дальнейших открытиях такого больше не будет. Здесь нажимаем единственную кнопку - Let`s Start.",
+                "2. Дальше будет небольшой опрос, где необязательно что-либо выбирать, так как он ни на что не повлияет. Просто жмём Continue.",
+                "3. Нажимаем первый переключатель. Второй отвечает за установку тёмной темы. Включать или не включать - выбор на ваш вкус. Третий переключатель не трогаем и жмём Continue.",
+                "4. Просто предлагают премиум подписку. Жмём крестик в правом верхнем углу.",
+                "5. Вам предлагают показывать либо таргетированную, либо не таргетированную рекламу. В целом выбирать вам, но лично я выбрал \"No\". Не жмите на третью кнопку.",
+                "6. Теперь, когда мы зашли в приложение, нам нужно прописать id работы, с которой надо начать парсинг. В данном случае я прописал 500000 (вы тоже можете прописать 500000, так как я уже забил интервал 1-500000, а 500000-1000000 выбрал для примера). Затем мы нажимаем на папочку в левом верхнем углу и нажимаем на Save as.",
+                "7. Выбираем \"Home, removed on uninstall\" (либо другой пункт, если вы знаете, что делаете).",
+                "8. Сохраняем файл как last_processed_fic_id.txt. Просто нажмите на кнопку \"Скопировать текст\" под этим текстом, чтобы скопировкать названик файла в буфер обмена. ", 
+                "9. Теперь нам надо вставить код ранее выбранного интервала. Скопируйте код в буфер обмена, нажав на значок с ранее выбранным интервалом. Затем сохраните его, нажав на Save as.",
+                "10. Перейдите в папку, где мы сохранили last_processed_fic_id.txt. Называем любым латинским названием, но обязательно с расширением \".py\".",
+                "11. Не волнуйтесь, осталось совсем немного. Теперь нужно установить две библиотеки - requests и BeautifulSoup (это делается очень просто). Сначала копируем в файле слово \"requests\". Затем нажимаем на три горизонтальных полоски в правом верхнем углу. Повторяем тоже самое, чтобы установить BeautifulSoup.",
+                "12. Нажимаем на Pip.",
+                "13. Вставляем скопированное слово в текстовую строку и нажимаем на кнопку Install.",
+                "14. Теперь осталось только нажать на круглую жёлтую кнопку в левом нижнем углу.",
+                "15. Вуаля - заработало! Теперь можно свернуть приложение, нажав на горизонтальную полоску в левом верхнем углу, чтобы код выполнялся на фоне и вы могли заняться своими делами.",
+                "16. Этот значок указывает на то, что приложение работает в фоновом режиме.",
+                "17. Если значок через время пропал, это значит, что нужно заново открыть файл через кнопку Open и запустить код на жёлтую кнопку. Конец инструкции."
+                ];
+            gallery.description.innerText = descriptions[gallery.currentIndex];
+        }
+
+        function checkShowCopyButton(gallery) {
+            if (gallery.currentIndex === 7) {
+                gallery.copyButton.style.display = "block";
+                gallery.copyButton.addEventListener("click", function () {
+                    const textToCopy = "last_processed_fic_id.txt";
+                    navigator.clipboard.writeText(textToCopy)
+                        .then(() => alert('Text copied to clipboard'))
+                        .catch(err => console.error('Unable to copy text', err));
+                });
+            } else {
+                gallery.copyButton.style.display = "none";
+            }
+        }
+
+        function openFullscreen(gallery, imageUrl) {
+            gallery.fullscreenImage.src = imageUrl;
+            gallery.fullscreenOverlay.style.display = "flex";
+        }
+
+        function closeFullscreen(gallery) {
+            gallery.fullscreenOverlay.style.display = "none";
+        }
+    });
+</script>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js";
+    import { getDatabase, ref, runTransaction, onValue } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js";
+
+    // Конфигурация Firebase
+    const firebaseConfig = {
+        apiKey: "AIzaSyBwrZfBxKjvVbOYzDN4lHo5xE-nrf51CxU",
+        authDomain: "ficbook-download.firebaseapp.com",
+        projectId: "ficbook-download",
+        storageBucket: "ficbook-download.appspot.com",
+        messagingSenderId: "652122732532",
+        appId: "1:652122732532:web:267a933cff49112a026ba1",
+        databaseURL: "https://ficbook-download-default-rtdb.europe-west1.firebasedatabase.app"
+    };
+
+    // Инициализация Firebase
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+
+    // Функция для увеличения счетчика скачиваний
+    function increaseDownloadCount(fileId) {
+        const downloadCountRef = ref(database, `downloadCount/${fileId}`);
+        
+        runTransaction(downloadCountRef, (currentCount) => (currentCount || 0) + 1)
+            .then(() => {
+                console.log(`Счетчик для файла ${fileId} увеличен успешно!`);
+            })
+            .catch((error) => {
+                console.error(`Ошибка при увеличении счетчика для файла ${fileId}:`, error);
+            });
+    }
+
+    // Отслеживание события скачивания для каждого файла
+    const downloadButtons = document.querySelectorAll('.image-container a[download]');
+    downloadButtons.forEach((button) => {
+        button.addEventListener('click', (event) => {
+            const fileId = event.target.closest('.image-container').querySelector('.file-name').textContent.trim();
+            increaseDownloadCount(fileId);
+        });
+    });
+
+    // Отслеживание события клика для второго вида файлов
+    const copyButtons = document.querySelectorAll('.image-container[onclick]');
+    copyButtons.forEach((button) => {
+        button.addEventListener('click', (event) => {
+            const fileId = event.target.closest('.image-container').querySelector('.file-name').textContent.trim();
+            increaseDownloadCount(fileId);
+        });
+    });
+
+    // Отслеживание изменений счетчика скачиваний и обновление визуального счетчика
+    const downloadCounters = document.querySelectorAll('.download-counter');
+    downloadCounters.forEach((counter) => {
+        const fileId = counter.id.replace('counter', '');
+        const downloadCountRef = ref(database, `downloadCount/${fileId}`);
+        
+        onValue(downloadCountRef, (snapshot) => {
+            const count = snapshot.val() || 0;
+            counter.textContent = count;
+        });
+    });
+</script>
+    </article>
+
+</body>
+</html>
