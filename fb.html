@@ -237,6 +237,7 @@ if (screen.width <= 480) {
 window.location = "file:///C:/Users/Dmitriy.DESKTOP-H28FQN8/Desktop/fb_s/index-mobile.html";
 }
 </script>
+
 </head>
 <body>
 
@@ -952,9 +953,9 @@ function showContent(device) {
     const app = initializeApp(firebaseConfig);
     const database = getDatabase(app);
 
-    // Функция для увеличения счетчика скачиваний с учетом IP-адреса
-    function increaseDownloadCount(fileId, ipAddress) {
-        const downloadCountRef = ref(database, `downloadCount/${fileId}/${ipAddress}`);
+    // Функция для увеличения счетчика скачиваний
+    function increaseDownloadCount(fileId) {
+        const downloadCountRef = ref(database, `downloadCount/${fileId}`);
         
         runTransaction(downloadCountRef, (currentCount) => (currentCount || 0) + 1)
             .then(() => {
@@ -965,39 +966,21 @@ function showContent(device) {
             });
     }
 
-    // Получение IP-адреса пользователя с использованием ipinfo.io
-    async function getIpAddress() {
-        try {
-            const response = await fetch('https://ipinfo.io/json');
-            const data = await response.json();
-            return data.ip;
-        } catch (error) {
-            console.error('Ошибка при получении IP-адреса:', error);
-            return null;
-        }
-    }
-
     // Отслеживание события скачивания для каждого файла
     const downloadButtons = document.querySelectorAll('.image-container a[download]');
     downloadButtons.forEach((button) => {
-        button.addEventListener('click', async (event) => {
+        button.addEventListener('click', (event) => {
             const fileId = event.target.closest('.image-container').querySelector('.file-name').textContent.trim();
-            const ipAddress = await getIpAddress();
-            if (ipAddress) {
-                increaseDownloadCount(fileId, ipAddress);
-            }
+            increaseDownloadCount(fileId);
         });
     });
 
     // Отслеживание события клика для второго вида файлов
     const copyButtons = document.querySelectorAll('.image-container[onclick]');
     copyButtons.forEach((button) => {
-        button.addEventListener('click', async (event) => {
+        button.addEventListener('click', (event) => {
             const fileId = event.target.closest('.image-container').querySelector('.file-name').textContent.trim();
-            const ipAddress = await getIpAddress();
-            if (ipAddress) {
-                increaseDownloadCount(fileId, ipAddress);
-            }
+            increaseDownloadCount(fileId);
         });
     });
 
@@ -1008,7 +991,7 @@ function showContent(device) {
         const downloadCountRef = ref(database, `downloadCount/${fileId}`);
         
         onValue(downloadCountRef, (snapshot) => {
-            const count = snapshot.val() ? Object.values(snapshot.val()).reduce((acc, curr) => acc + curr, 0) : 0;
+            const count = snapshot.val() || 0;
             counter.textContent = count;
         });
     });
