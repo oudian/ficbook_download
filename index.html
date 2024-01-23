@@ -2,7 +2,8 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Фикбук в каждом доме</title>
+    <title>Спасём фикбук!</title>
+    <link rel="icon" href="icon.png" type="image/x-icon">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -229,6 +230,59 @@
             transition: background-color 0.3s;
         }
 
+        .modal-open-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background-color: #3498db;
+  color: #fff;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 24px;
+  line-height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-faq {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-faq-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  width: 80%;
+  max-width: 600px;
+}
+
+.close-btn {
+  position: absolute;
+  font-size: 30px;
+  cursor: pointer;
+  left: 94%;
+  top: 3%;
+}
+
+.faq-item {
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.answer {
+  display: none;
+}
+
       
     </style>
 
@@ -246,7 +300,7 @@ window.location = "file:///C:/Users/Dmitriy.DESKTOP-H28FQN8/Desktop/fb_s/index-m
     </header>
 
     <article>
-
+        <div class="modal-open-btn" onclick="openModal()">FAQ</div>
         
         <p>
             Доброго времени суток. Я знаю, что в целом вам и нахер не сдались все эти трудности и вы просто хотите прочитать продолжение, но всё же. 
@@ -279,7 +333,7 @@ window.location = "file:///C:/Users/Dmitriy.DESKTOP-H28FQN8/Desktop/fb_s/index-m
             На данный момент, я дошёл до номера 133665, а это чуть меньше процента. И делал я это несколько дней без перерывов. Скачивать работы можно как с компьютера, так и с телефона.
         </p>
 
-        <p class="p-title">Зачем мне это?<p>
+        <p class="p-title">Зачем это нужно?<p>
 
         <p>
             У меня есть небеспочвенные подозрения о том, что вскоре фикбук может скоропостижно сгинуть. 
@@ -293,7 +347,18 @@ window.location = "file:///C:/Users/Dmitriy.DESKTOP-H28FQN8/Desktop/fb_s/index-m
             В конце концов, из 133665 просканированных страниц было успешно скачано только 47182. То есть, 86483 были попросту удалены по тем или иным причинам. А это 65% от общего числа. ,три,
         </p>
         <p class="p-title-1">Как можно скачать скрапер?</p>
-        <br><p>Для начала выберете устройство, на который вы хотите установить скрапер:</p><br>
+
+        <p>P.s: Когда вы завершите установку, или у вас возникнут проблемы на каком-то из этапов, вступите в чат в телеграмме "Спасём фикбук!"</p>
+        <div style="text-align: center;">
+            <a href="https://t.me/+VdSM5wAEYTg1OTIy">
+            <div style="border-radius: 50%; overflow: hidden; margin: 0 auto;">
+              <img src="sf.png" alt="Вступить в чат" style="border-radius: 50%; width: 150px; height: 150px;">
+            </div>
+            </a>
+            <a href="https://t.me/+VdSM5wAEYTg1OTIy" style="margin-top: 10px; padding-bottom: 40px; font-weight: bold; text-decoration: none; color: black;">Вступить в чат</a>     
+          </div>
+          
+          <br><p>Для начала выберете устройство, на который вы хотите установить скрапер:</p><br>
 
         <div class="center-images">
             <div class="device" onclick="showContent('pc')">
@@ -544,15 +609,15 @@ window.location = "file:///C:/Users/Dmitriy.DESKTOP-H28FQN8/Desktop/fb_s/index-m
         </p>    
         
         <center><img src="ant.png" width="700"></center>
-        <p>Какие-то антивирусники (как мой) могут ругаться на то, что программа пытается изменить файл last_processed_fic_id.txt. Просто разрешаем приложение сворачиваем командную строку.</p>
+        <p>Если вы сохранили в программу на диск C, то какие-то антивирусники (как мой) могут ругаться на то, что программа пытается изменить файл last_processed_fic_id.txt. Просто разрешаем приложение и сворачиваем командную строку.</p>
         </div>
         
         <div class="content" id="spContent">
 
             <p>
                 Выберите блок с диапазоном работ, который вы будете скачивать. Пожалуйста, не смущайтесь, если у всех вариантов уже есть один или несколько голосов, 
-                так как многие могут просто скачивать и забивать. Просто выберите вариант с найменьшим числом голосов. Пока не нажимайте на значки, так как они копируют код в ваш буфер обмена, 
-                а вам ещё предстоит кое-что туда скопировать. Так что просто выберите и запимните первое число в диапазлне.
+                так как многие могут просто скачивать и забивать. Просто выберите вариант с найменьшим числом голосов, либо любой случайный, если количество голосов везде одинаково (или если их вообще нигде нет :\). Пока не нажимайте на значки, так как они копируют код в ваш буфер обмена, 
+                а вам ещё предстоит кое-что туда скопировать. Так что просто выберите и запомните первое число в диапазоне.
             </p>
 
             <p>Установите приложение Pydroid, нажав на этот значок ниже:</p>
@@ -782,6 +847,44 @@ window.location = "file:///C:/Users/Dmitriy.DESKTOP-H28FQN8/Desktop/fb_s/index-m
             <button class="password-button" onclick="checkPassword()">Подтвердить</button>
         </div>
     </div>
+
+
+
+
+    <div class="modal-open-btn" onclick="openModal()">FAQ</div>
+  
+  <div class="modal-faq" id="faqModal">
+    <div class="modal-faq-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <h2>Часто задаваемые вопросы (по моему мнению):</h2>
+
+      <div class="faq-item" onclick="toggleAnswer(1)">
+        <h3>Откуда мне знать, что в скачанных файлах/коде нету вирусов?</h3>
+        <div class="answer" id="answer1"><p>В интернете есть множество онлайн сканеров файлов на вирусы. Вот статья со <a href="https://antivirus.co.ua/free-online-antivirus/">списком</a> подобный сайтов, 
+		где вы можете проверить файлы на вирусы. Чтобы проверить пайтон-код на вирусы, можете скинуть его любой текстовой нейросети на анализ. 
+		Насколько я слышал, в РФ <a href="https://chat.openai.com/">ChatGPT</a> заблокирован, так что если вы оттуда, то можете использовать <a href="https://copilot.microsoft.com/">Copilot</a> 
+		(в прошлом Bing) от Майкрософта. Кстати говоря, он не требует регистрации.</p></div>
+      </div>
+
+      <div class="faq-item" onclick="toggleAnswer(2)">
+        <h3>Где в итоге будут храниться скачанные работы?</h3>
+        <div class="answer" id="answer2"><p></p></div>
+      </div>
+
+      <div class="faq-item" onclick="toggleAnswer(3)">
+        <h3>Нагружает ли парсинг фикбук?</h3>
+        <div class="answer" id="answer3"><p>Фикбук - самый популярный русскоязычный сайт с фанфиками, 
+		который имеет в среднем два с половиной миллиона посещений в день. Это не нагрузит их сервера ни на йоту.</p></div>
+      </div>
+	  
+	  <div class="faq-item" onclick="toggleAnswer(4)">
+        <h3>Когда прода?</h3>
+        <div class="answer" id="answer4"><p>Завтра.</p></div>
+      </div>
+
+
+    </div>
+  </div>
       
       
       <script>
@@ -897,12 +1000,12 @@ function showContent(device) {
                 "7. Выбираем \"Home, removed on uninstall\" (либо другой пункт, если вы знаете, что делаете).",
                 "8. Сохраняем файл как last_processed_fic_id.txt. Просто нажмите на кнопку \"Скопировать текст\" под этим текстом, чтобы скопировкать названик файла в буфер обмена. ", 
                 "9. Теперь нам надо вставить код ранее выбранного интервала. Скопируйте код в буфер обмена, нажав на значок с ранее выбранным интервалом. Затем сохраните его, нажав на Save as.",
-                "10. Перейдите в папку, где мы сохранили last_processed_fic_id.txt. Называем любым латинским названием, но обязательно с расширением \".py\".",
-                "11. Не волнуйтесь, осталось совсем немного. Теперь нужно установить две библиотеки - requests и BeautifulSoup (это делается очень просто). Сначала копируем в файле слово \"requests\". Затем нажимаем на три горизонтальных полоски в правом верхнем углу. Повторяем тоже самое, чтобы установить BeautifulSoup.",
+                "10. Перейдите в папку, где мы сохранили last_processed_fic_id.txt. Называем любым названием, но обязательно с расширением \".py\".",
+                "11. Не волнуйтесь, осталось совсем немного. Теперь нужно установить две библиотеки - requests и BeautifulSoup (это делается очень просто). Сначала копируем в файле слово \"requests\". Затем нажимаем на три горизонтальных полоски в левом верхнем углу. Повторяем тоже самое, чтобы установить BeautifulSoup.",
                 "12. Нажимаем на Pip.",
                 "13. Вставляем скопированное слово в текстовую строку и нажимаем на кнопку Install.",
-                "14. Теперь осталось только нажать на круглую жёлтую кнопку в левом нижнем углу.",
-                "15. Вуаля - заработало! Теперь можно свернуть приложение, нажав на горизонтальную полоску в левом верхнем углу, чтобы код выполнялся на фоне и вы могли заняться своими делами.",
+                "14. Теперь осталось только нажать на круглую жёлтую кнопку в правом нижнем углу.",
+                "15. Вуаля - заработало! Теперь можно свернуть приложение, нажав на горизонтальную полоску в правом верхнем углу, чтобы код выполнялся на фоне и вы могли заняться своими делами.",
                 "16. Этот значок указывает на то, что приложение работает в фоновом режиме.",
                 "17. Если значок через время пропал, это значит, что нужно заново открыть файл через кнопку Open и запустить код на жёлтую кнопку. Конец инструкции."
                 ];
@@ -1000,6 +1103,10 @@ function showContent(device) {
 
 
 
+
+
+
+
 <script>
     function checkPassword() {
         var enteredPassword = document.getElementById('passwordInput').value;
@@ -1010,6 +1117,30 @@ function showContent(device) {
         }
     }
 </script>
+
+<script>
+    function openModal() {
+    document.getElementById('faqModal').style.display = 'block';
+  }
+  
+  function closeModal() {
+    document.getElementById('faqModal').style.display = 'none';
+  }
+  
+  function toggleAnswer(questionNumber) {
+    var answerId = 'answer' + questionNumber;
+    var answer = document.getElementById(answerId);
+  
+    if (answer.style.display === 'block') {
+      answer.style.display = 'none';
+    } else {
+      answer.style.display = 'block';
+    }
+  }
+
+
+    </script>
+
     </article>
 
 </body>
