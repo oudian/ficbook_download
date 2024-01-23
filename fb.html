@@ -181,8 +181,38 @@
             margin-right: 10px;
         }
 
+        #fullscreenOverlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        #fullscreenImage {
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .download-counter {
+            position: relative;
+            font-size: 50px;
+            font-family: 'Arial Black', sans-serif;
+            color: rgb(47, 52, 75);
+        }
+
       
     </style>
+
+<script type="text/javascript">
+if (screen.width <= 480) {
+window.location = "file:///C:/Users/Dmitriy.DESKTOP-H28FQN8/Desktop/fb_s/index-mobile.html";
+}
+</script>
 </head>
 <body>
 
@@ -258,23 +288,19 @@
 
         <div class="files-container">
             <div class="image-container">
-                    <img src="exe-my.png" alt="Изображение">
-                    <p class="file-name">1-500000</p>
-                </a>
-            </div>
-    
-            <div class="image-container">
-                <a href="fb/fb(500000-1000000).zip" download>
-                    <img src="exe.png" alt="Изображение">
-                    <p class="file-name">500000-1000000</p>
-                </a>
-            </div>
-    
-            <div class="image-container">
                 <a href="fb/fb(1000000-1500000).zip" download>
                     <img src="exe.png" alt="Изображение">
                     <p class="file-name">1000000-1500000</p>
                 </a>
+                <span class="download-counter" id="counter1000000-1500000">0</span>
+            </div>
+
+           <div class="image-container">
+                <a href="fb/fb(1000000-1500000).zip" download>
+                    <img src="exe.png" alt="Изображение">
+                    <p class="file-name">1000000-1500000</p>
+                </a>
+                <span class="download-counter" id="counter1000000-1500000">0</span>
             </div>
     
             <div class="image-container">
@@ -282,6 +308,7 @@
                     <img src="exe.png" alt="Изображение">
                     <p class="file-name">1500000-2000000</p>
                 </a>
+                <span class="download-counter" id="counter1500000-2000000">0</span>
             </div>
     
             <div class="image-container">
@@ -289,6 +316,7 @@
                     <img src="exe.png" alt="Изображение">
                     <p class="file-name">2000000-2500000</p>
                 </a>
+                <span class="download-counter" id="counter2000000-2500000">0</span>
             </div>
     
             <div class="image-container">
@@ -296,6 +324,7 @@
                     <img src="exe.png" alt="Изображение">
                     <p class="file-name">2500000-3000000</p>
                 </a>
+                <span class="download-counter" id="counter2500000-3000000">0</span>
             </div>
     
             <div class="image-container">
@@ -303,6 +332,7 @@
                     <img src="exe.png" alt="Изображение">
                     <p class="file-name">3000000-3500000</p>
                 </a>
+                <span class="download-counter" id="counter3000000-3500000">0</span>
             </div>
 
             <div class="image-container">
@@ -310,6 +340,7 @@
                     <img src="exe.png" alt="Изображение">
                     <p class="file-name">3500000-4000000</p>
                 </a>
+                <span class="download-counter" id="counter3500000-4000000">0</span>
             </div>
 
             <div class="image-container">
@@ -317,6 +348,7 @@
                     <img src="exe.png" alt="Изображение">
                     <p class="file-name">4000000-4500000</p>
                 </a>
+                <span class="download-counter" id="counter4000000-4500000">0</span>
             </div>
 
             <div class="image-container">
@@ -324,6 +356,7 @@
                     <img src="exe.png" alt="Изображение">
                     <p class="file-name">4500000-5000000</p>
                 </a>
+                <span class="download-counter" id="counter4500000-5000000">0</span>
             </div>
 
             <div class="image-container">
@@ -331,6 +364,7 @@
                     <img src="exe.png" alt="Изображение">
                     <p class="file-name">5000000-5500000</p>
                 </a>
+                <span class="download-counter" id="counter5000000-5500000">0</span>
             </div>
             
             <div class="image-container">
@@ -338,6 +372,7 @@
                     <img src="exe.png" alt="Изображение">
                     <p class="file-name">5500000-6000000</p>
                 </a>
+                <span class="download-counter" id="counter5500000-6000000">0</span>
             </div>
 
             <div class="image-container">
@@ -345,6 +380,7 @@
                     <img src="exe.png" alt="Изображение">
                     <p class="file-name">6000000-6500000</p>
                 </a>
+                <span class="download-counter" id="counter6000000-6500000">0</span>
             </div>
 
             <div class="image-container">
@@ -352,6 +388,7 @@
                     <img src="exe.png" alt="Изображение">
                     <p class="file-name">6500000-7000000</p>
                 </a>
+                <span class="download-counter" id="counter6500000-7000000">0</span>
             </div>
 
             <div class="image-container">
@@ -359,6 +396,7 @@
                     <img src="exe.png" alt="Изображение">
                     <p class="file-name">7000000-7500000</p>
                 </a>
+                <span class="download-counter" id="counter7000000-7500000">0</span>
             </div>
 
             <div class="image-container">
@@ -366,6 +404,7 @@
                     <img src="exe.png" alt="Изображение">
                     <p class="file-name">7500000-8000000</p>
                 </a>
+                <span class="download-counter" id="counter7500000-8000000">0</span>
             </div>
             
             <div class="image-container">
@@ -373,6 +412,7 @@
                     <img src="exe.png" alt="Изображение">
                     <p class="file-name">8000000-8500000</p>
                 </a>
+                <span class="download-counter" id="counter8000000-8500000">0</span>
             </div>
 
             <div class="image-container">
@@ -380,6 +420,7 @@
                     <img src="exe.png" alt="Изображение">
                     <p class="file-name">8500000-9000000</p>
                 </a>
+                <span class="download-counter" id="counter8500000-9000000">0</span>
             </div>
 
             <div class="image-container">
@@ -387,6 +428,7 @@
                     <img src="exe.png" alt="Изображение">
                     <p class="file-name">9000000-9500000</p>
                 </a>
+                <span class="download-counter" id="counter9000000-9500000">0</span>
             </div>
 
             <div class="image-container">
@@ -394,6 +436,7 @@
                     <img src="exe.png" alt="Изображение">
                     <p class="file-name">9500000-10000000</p>
                 </a>
+                <span class="download-counter" id="counter9500000-10000000">0</span>
             </div>
 
             <div class="image-container">
@@ -401,6 +444,7 @@
                     <img src="exe.png" alt="Изображение">
                     <p class="file-name">10000000-10500000</p>
                 </a>
+                <span class="download-counter" id="counter10000000-10500000">0</span>
             </div>
 
             <div class="image-container">
@@ -408,6 +452,7 @@
                     <img src="exe.png" alt="Изображение">
                     <p class="file-name">10500000-11000000</p>
                 </a>
+                <span class="download-counter" id="counter10500000-11000000">0</span>
             </div>
 
             <div class="image-container">
@@ -415,6 +460,7 @@
                     <img src="exe.png" alt="Изображение">
                     <p class="file-name">11000000-11500000</p>
                 </a>
+                <span class="download-counter" id="counter11000000-11500000">0</span>
             </div>
 
             <div class="image-container">
@@ -422,6 +468,7 @@
                     <img src="exe.png" alt="Изображение">
                     <p class="file-name">11500000-12000000</p>
                 </a>
+                <span class="download-counter" id="counter11500000-12000000">0</span>
             </div>
 
             <div class="image-container">
@@ -429,6 +476,7 @@
                     <img src="exe.png" alt="Изображение">
                     <p class="file-name">12000000-12500000</p>
                 </a>
+                <span class="download-counter" id="counter12000000-12500000">0</span>
             </div>
 
             <div class="image-container">
@@ -436,6 +484,7 @@
                     <img src="exe.png" alt="Изображение">
                     <p class="file-name">12500000-13000000</p>
                 </a>
+                <span class="download-counter" id="counter12500000-13000000">0</span>
             </div>
 
             <div class="image-container">
@@ -443,6 +492,7 @@
                     <img src="exe.png" alt="Изображение">
                     <p class="file-name">13000000-13500000</p>
                 </a>
+                <span class="download-counter" id="counter13000000-13500000">0</span>
             </div>
 
             <div class="image-container">
@@ -450,6 +500,7 @@
                     <img src="exe.png" alt="Изображение">
                     <p class="file-name">13500000-13725396</p>
                 </a>
+                <span class="download-counter" id="counter13500000-13725396">0</span>
             </div>
 
 
@@ -459,7 +510,7 @@
            строчки о успешном сохранении работы и ошибках 404, значит, всё работает!
         </p>    
         
-        <center><img src="ant.PNG" width="700"></center>
+        <center><img src="ant.png" width="700"></center>
         <p>Какие-то антивирусники (как мой) могут ругаться на то, что программа пытается изменить файл last_processed_fic_id.txt. Просто разрешаем приложение сворачиваем командную строку.</p>
         </div>
         
@@ -513,156 +564,167 @@
                 </div>
             </div>
             <button id="copyButton" style="display: none; margin-left: auto; margin-right: auto; margin-top: 10px;">Cкопировать текст</button>
-
+            
+            <div id="fullscreenOverlay">
+                <img id="fullscreenImage" src="" alt="Fullscreen Image">
+            </div>
 
             <div class="files-container">
-                <div class="image-container">
-                        <img src="python-my.png" alt="Изображение">
-                        <p class="file-name">1-500000</p>
-                    </a>
-                </div>
-        
-               <div class="image-container" onclick="copyFileContent('fb_txt/fb(500000-1000000).txt')">
-                    <img src="python.png" alt="Изображение">
-                    <p class="file-name">500000-1000000</p>
-                </div>
-        
                 <div class="image-container" onclick="copyFileContent('fb_txt/fb(1000000-1500000).txt')">
-                        <img src="python.png" alt="Изображение">
-                        <p class="file-name">1000000-1500000</p>
-                    </a>
-                </div>
-        
-                <div class="image-container" onclick="copyFileContent('fb_txt/fb(1500000-2000000).txt')">
-                        <img src="python.png" alt="Изображение">
-                        <p class="file-name">1500000-2000000</p>
-                    </a>
-                </div>
-        
-                <div class="image-container" onclick="copyFileContent('fb_txt/fb(2000000-2500000).txt')">
-                        <img src="python.png" alt="Изображение">
-                        <p class="file-name">2000000-2500000</p>
-                    </a>
-                </div>
-        
-                <div class="image-container" onclick="copyFileContent('fb_txt/fb(2500000-3000000).txt')">
-                        <img src="python.png" alt="Изображение">
-                        <p class="file-name">2500000-3000000</p>
-                    </a>
-                </div>
-        
-                <div class="image-container" onclick="copyFileContent('fb_txt/fb(3000000-3500000).txt')">
-                        <img src="python.png" alt="Изображение">
-                        <p class="file-name">3000000-3500000</p>
-                    </a>
-                </div>
+                    <img src="python.png" alt="Изображение">
+                    <p class="file-name">1000000-1500000</p>
+                <span class="download-counter" id="counter1000000-1500000">0</span>
+            </div>
     
-                <div class="image-container" onclick="copyFileContent('fb_txt/fb(3500000-4000000).txt')">
-                        <img src="python.png" alt="Изображение">
-                        <p class="file-name">3500000-4000000</p>
-                    </a>
-                </div>
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(1500000-2000000).txt')">
+                    <img src="python.png" alt="Изображение">
+                    <p class="file-name">1500000-2000000</p>
+                <span class="download-counter" id="counter1500000-2000000">0</span>
+            </div>
     
-                <div class="image-container" onclick="copyFileContent('fb_txt/fb(4000000-4500000).txt')">
-                        <img src="python.png" alt="Изображение">
-                        <p class="file-name">4000000-4500000</p>
-                    </a>
-                </div>
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(2000000-2500000).txt')">
+                    <img src="python.png" alt="Изображение">
+                    <p class="file-name">2000000-2500000</p>
+                <span class="download-counter" id="counter2000000-2500000">0</span>
+            </div>
     
-                <div class="image-container" onclick="copyFileContent('fb_txt/fb(4500000-5000000).txt')">
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(2500000-3000000).txt')">
                     <img src="python.png" alt="Изображение">
-                    <p class="file-name">4500000-5000000</p>
-                </div>
-                
-                <div class="image-container" onclick="copyFileContent('fb_txt/fb(5000000-5500000).txt')">
+                    <p class="file-name">2500000-3000000</p>
+                <span class="download-counter" id="counter2500000-3000000">0</span>
+            </div>
+    
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(3000000-3500000).txt')">
                     <img src="python.png" alt="Изображение">
-                    <p class="file-name">5000000-5500000</p>
-                </div>
-                
-                <div class="image-container" onclick="copyFileContent('fb_txt/fb(5500000-6000000).txt')">
-                    <img src="python.png" alt="Изображение">
-                    <p class="file-name">5500000-6000000</p>
-                </div>
-                
-                <div class="image-container" onclick="copyFileContent('fb_txt/fb(6000000-6500000).txt')">
-                    <img src="python.png" alt="Изображение">
-                    <p class="file-name">6000000-6500000</p>
-                </div>
-                
-                <div class="image-container" onclick="copyFileContent('fb_txt/fb(6500000-7000000).txt')">
-                    <img src="python.png" alt="Изображение">
-                    <p class="file-name">6500000-7000000</p>
-                </div>
-                
-                <div class="image-container" onclick="copyFileContent('fb_txt/fb(7000000-7500000).txt')">
-                    <img src="python.png" alt="Изображение">
-                    <p class="file-name">7000000-7500000</p>
-                </div>
-                
-                <div class="image-container" onclick="copyFileContent('fb_txt/fb(7500000-8000000).txt')">
-                    <img src="python.png" alt="Изображение">
-                    <p class="file-name">7500000-8000000</p>
-                </div>
-                
-                <div class="image-container" onclick="copyFileContent('fb_txt/fb(8000000-8500000).txt')">
-                    <img src="python.png" alt="Изображение">
-                    <p class="file-name">8000000-8500000</p>
-                </div>
-                
-                <div class="image-container" onclick="copyFileContent('fb_txt/fb(8500000-9000000).txt')">
-                    <img src="python.png" alt="Изображение">
-                    <p class="file-name">8500000-9000000</p>
-                </div>
-                
-                <div class="image-container" onclick="copyFileContent('fb_txt/fb(9000000-9500000).txt')">
-                    <img src="python.png" alt="Изображение">
-                    <p class="file-name">9000000-9500000</p>
-                </div>
-                
-                <div class="image-container" onclick="copyFileContent('fb_txt/fb(9500000-10000000).txt')">
-                    <img src="python.png" alt="Изображение">
-                    <p class="file-name">9500000-10000000</p>
-                </div>
-                
-                <div class="image-container" onclick="copyFileContent('fb_txt/fb(10000000-10500000).txt')">
-                    <img src="python.png" alt="Изображение">
-                    <p class="file-name">10000000-10500000</p>
-                </div>
-                
-                <div class="image-container" onclick="copyFileContent('fb_txt/fb(10500000-11000000).txt')">
-                    <img src="python.png" alt="Изображение">
-                    <p class="file-name">10500000-11000000</p>
-                </div>
-                
-                <div class="image-container" onclick="copyFileContent('fb_txt/fb(11000000-11500000).txt')">
-                    <img src="python.png" alt="Изображение">
-                    <p class="file-name">11000000-11500000</p>
-                </div>
-                
-                <div class="image-container" onclick="copyFileContent('fb_txt/fb(11500000-12000000).txt')">
-                    <img src="python.png" alt="Изображение">
-                    <p class="file-name">11500000-12000000</p>
-                </div>
-                
-                <div class="image-container" onclick="copyFileContent('fb_txt/fb(12000000-12500000).txt')">
-                    <img src="python.png" alt="Изображение">
-                    <p class="file-name">12000000-12500000</p>
-                </div>
+                    <p class="file-name">3000000-3500000</p>
+                <span class="download-counter" id="counter3000000-3500000">0</span>
+            </div>
 
-                <div class="image-container" onclick="copyFileContent('fb_txt/fb(12500000-13000000).txt')">
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(3500000-4000000).txt')">
                     <img src="python.png" alt="Изображение">
-                    <p class="file-name">12500000-13000000</p>
-                </div>
-                
-                <div class="image-container" onclick="copyFileContent('fb_txt/fb(13000000-13500000).txt')">
+                    <p class="file-name">3500000-4000000</p>
+                <span class="download-counter" id="counter3500000-4000000">0</span>
+            </div>
+
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(4000000-4500000).txt')">
                     <img src="python.png" alt="Изображение">
-                    <p class="file-name">13000000-13500000</p>
-                </div>
-                
-                <div class="image-container" onclick="copyFileContent('fb_txt/fb(13500000-13725396).txt')">
-                    <img src="python.png" alt="Изображение">
-                    <p class="file-name">13500000-13725396</p>
-                </div>
+                    <p class="file-name">4000000-4500000</p>
+                <span class="download-counter" id="counter4000000-4500000">0</span>
+            </div>
+
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(4500000-5000000).txt')">
+                <img src="python.png" alt="Изображение">
+                <p class="file-name">4500000-5000000</p>
+                <span class="download-counter" id="counter4500000-5000000">0</span>
+            </div>
+            
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(5000000-5500000).txt')">
+                <img src="python.png" alt="Изображение">
+                <p class="file-name">5000000-5500000</p>
+                <span class="download-counter" id="counter5000000-5500000">0</span>
+            </div>
+            
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(5500000-6000000).txt')">
+                <img src="python.png" alt="Изображение">
+                <p class="file-name">5500000-6000000</p>
+                <span class="download-counter" id="counter5500000-6000000">0</span>
+            </div>
+            
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(6000000-6500000).txt')">
+                <img src="python.png" alt="Изображение">
+                <p class="file-name">6000000-6500000</p>
+                <span class="download-counter" id="counter6000000-6500000">0</span>
+            </div>
+            
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(6500000-7000000).txt')">
+                <img src="python.png" alt="Изображение">
+                <p class="file-name">6500000-7000000</p>
+                <span class="download-counter" id="counter6500000-7000000">0</span>
+            </div>
+            
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(7000000-7500000).txt')">
+                <img src="python.png" alt="Изображение">
+                <p class="file-name">7000000-7500000</p>
+                <span class="download-counter" id="counter7000000-7500000">0</span>
+            </div>
+            
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(7500000-8000000).txt')">
+                <img src="python.png" alt="Изображение">
+                <p class="file-name">7500000-8000000</p>
+                <span class="download-counter" id="counter7500000-8000000">0</span>
+            </div>
+            
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(8000000-8500000).txt')">
+                <img src="python.png" alt="Изображение">
+                <p class="file-name">8000000-8500000</p>
+                <span class="download-counter" id="counter8000000-8500000">0</span>
+            </div>
+            
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(8500000-9000000).txt')">
+                <img src="python.png" alt="Изображение">
+                <p class="file-name">8500000-9000000</p>
+                <span class="download-counter" id="counter8500000-9000000">0</span>
+            </div>
+            
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(9000000-9500000).txt')">
+                <img src="python.png" alt="Изображение">
+                <p class="file-name">9000000-9500000</p>
+                <span class="download-counter" id="counter9000000-9500000">0</span>
+            </div>
+            
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(9500000-10000000).txt')">
+                <img src="python.png" alt="Изображение">
+                <p class="file-name">9500000-10000000</p>
+                <span class="download-counter" id="counter9500000-10000000">0</span>
+            </div>
+            
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(10000000-10500000).txt')">
+                <img src="python.png" alt="Изображение">
+                <p class="file-name">10000000-10500000</p>
+                <span class="download-counter" id="counter10000000-10500000">0</span>
+            </div>
+            
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(10500000-11000000).txt')">
+                <img src="python.png" alt="Изображение">
+                <p class="file-name">10500000-11000000</p>
+                <span class="download-counter" id="counter10500000-11000000">0</span>
+            </div>
+            
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(11000000-11500000).txt')">
+                <img src="python.png" alt="Изображение">
+                <p class="file-name">11000000-11500000</p>
+                <span class="download-counter" id="counter11000000-11500000">0</span>
+            </div>
+            
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(11500000-12000000).txt')">
+                <img src="python.png" alt="Изображение">
+                <p class="file-name">11500000-12000000</p>
+                <span class="download-counter" id="counter11500000-12000000">0</span>
+            </div>
+            
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(12000000-12500000).txt')">
+                <img src="python.png" alt="Изображение">
+                <p class="file-name">12000000-12500000</p>
+                <span class="download-counter" id="counter12000000-12500000">0</span>
+            </div>
+
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(12500000-13000000).txt')">
+                <img src="python.png" alt="Изображение">
+                <p class="file-name">12500000-13000000</p>
+                <span class="download-counter" id="counter12500000-13000000">0</span>
+            </div>
+            
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(13000000-13500000).txt')">
+                <img src="python.png" alt="Изображение">
+                <p class="file-name">13000000-13500000</p>
+                <span class="download-counter" id="counter13000000-13500000">0</span>
+            </div>
+            
+            <div class="image-container" onclick="copyFileContent('fb_txt/fb(13500000-13725396).txt')">
+                <img src="python.png" alt="Изображение">
+                <p class="file-name">13500000-13725396</p>
+                <span class="download-counter" id="counter13500000-13725396">0</span>
+            </div>
                 </div>
 
         
@@ -722,6 +784,8 @@ function showContent(device) {
             nextBtn: document.getElementById("nextBtn1"),
             description: document.getElementById("description1"),
             copyButton: document.getElementById("copyButton"),
+            fullscreenOverlay: document.getElementById("fullscreenOverlay"),
+            fullscreenImage: document.getElementById("fullscreenImage"),
             currentIndex: 0,
             totalImages: 0
         };
@@ -740,6 +804,16 @@ function showContent(device) {
             });
 
             updateDescription(gallery);
+
+            gallery.sliderWrapper.addEventListener("click", function (event) {
+                if (event.target.tagName === "IMG") {
+                    openFullscreen(gallery, event.target.src);
+                }
+            });
+
+            gallery.fullscreenOverlay.addEventListener("click", function () {
+                closeFullscreen(gallery);
+            });
         }
 
         function showSlide(gallery) {
@@ -788,13 +862,85 @@ function showContent(device) {
                 gallery.copyButton.addEventListener("click", function () {
                     const textToCopy = "last_processed_fic_id.txt";
                     navigator.clipboard.writeText(textToCopy)
-                        .then(() => alert('Текст скопирован в буфер обмена'))
-                        .catch(err => console.error('Ошибка копирования', err));
+                        .then(() => alert('Text copied to clipboard'))
+                        .catch(err => console.error('Unable to copy text', err));
                 });
             } else {
                 gallery.copyButton.style.display = "none";
             }
         }
+
+        function openFullscreen(gallery, imageUrl) {
+            gallery.fullscreenImage.src = imageUrl;
+            gallery.fullscreenOverlay.style.display = "flex";
+        }
+
+        function closeFullscreen(gallery) {
+            gallery.fullscreenOverlay.style.display = "none";
+        }
+    });
+</script>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js";
+    import { getDatabase, ref, runTransaction, onValue } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js";
+
+    // Конфигурация Firebase
+    const firebaseConfig = {
+        apiKey: "AIzaSyBwrZfBxKjvVbOYzDN4lHo5xE-nrf51CxU",
+        authDomain: "ficbook-download.firebaseapp.com",
+        projectId: "ficbook-download",
+        storageBucket: "ficbook-download.appspot.com",
+        messagingSenderId: "652122732532",
+        appId: "1:652122732532:web:267a933cff49112a026ba1",
+        databaseURL: "https://ficbook-download-default-rtdb.europe-west1.firebasedatabase.app"
+    };
+
+    // Инициализация Firebase
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+
+    // Функция для увеличения счетчика скачиваний
+    function increaseDownloadCount(fileId) {
+        const downloadCountRef = ref(database, `downloadCount/${fileId}`);
+        
+        runTransaction(downloadCountRef, (currentCount) => (currentCount || 0) + 1)
+            .then(() => {
+                console.log(`Счетчик для файла ${fileId} увеличен успешно!`);
+            })
+            .catch((error) => {
+                console.error(`Ошибка при увеличении счетчика для файла ${fileId}:`, error);
+            });
+    }
+
+    // Отслеживание события скачивания для каждого файла
+    const downloadButtons = document.querySelectorAll('.image-container a[download]');
+    downloadButtons.forEach((button) => {
+        button.addEventListener('click', (event) => {
+            const fileId = event.target.closest('.image-container').querySelector('.file-name').textContent.trim();
+            increaseDownloadCount(fileId);
+        });
+    });
+
+    // Отслеживание события клика для второго вида файлов
+    const copyButtons = document.querySelectorAll('.image-container[onclick]');
+    copyButtons.forEach((button) => {
+        button.addEventListener('click', (event) => {
+            const fileId = event.target.closest('.image-container').querySelector('.file-name').textContent.trim();
+            increaseDownloadCount(fileId);
+        });
+    });
+
+    // Отслеживание изменений счетчика скачиваний и обновление визуального счетчика
+    const downloadCounters = document.querySelectorAll('.download-counter');
+    downloadCounters.forEach((counter) => {
+        const fileId = counter.id.replace('counter', '');
+        const downloadCountRef = ref(database, `downloadCount/${fileId}`);
+        
+        onValue(downloadCountRef, (snapshot) => {
+            const count = snapshot.val() || 0;
+            counter.textContent = count;
+        });
     });
 </script>
     </article>
