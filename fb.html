@@ -114,7 +114,6 @@
         }
 
         .file-name {
-            margin-top: 5px;
         }
 
         .image-container a {
@@ -200,7 +199,7 @@
 
         .download-counter {
             position: relative;
-            font-size: 50px;
+            font-size: 30px;
             font-family: 'Arial Black', sans-serif;
             color: rgb(47, 52, 75);
         }
@@ -287,12 +286,20 @@ window.location = "file:///C:/Users/Dmitriy.DESKTOP-H28FQN8/Desktop/fb_s/index-m
         </p>
 
         <div class="files-container">
+
             <div class="image-container">
-                <a href="fb/fb(1000000-1500000).zip" download>
-                    <img src="exe.png" alt="Изображение">
-                    <p class="file-name">1000000-1500000</p>
+                    <img src="exe-my.png" alt="Изображение">
+                    <p class="file-name">1-500000</p>
                 </a>
-                <span class="download-counter" id="counter1000000-1500000">0</span>
+                <span style="position: relative; font-size: 30px; font-family: 'Arial Black', sans-serif; color: rgb(47, 52, 75);">1</span>
+            </div>
+
+            <div class="image-container">
+                <a href="fb/fb(500000-1000000).zip" download>
+                    <img src="exe.png" alt="Изображение">
+                    <p class="file-name">500000-1000000</p>
+                </a>
+                <span class="download-counter" id="counter500000-1000000">0</span>
             </div>
 
            <div class="image-container">
@@ -570,6 +577,19 @@ window.location = "file:///C:/Users/Dmitriy.DESKTOP-H28FQN8/Desktop/fb_s/index-m
             </div>
 
             <div class="files-container">
+
+                <div class="image-container">
+                    <img src="python-my.png" alt="Изображение">
+                    <p class="file-name">1-500000</p>
+                <span style="position: relative; font-size: 30px; font-family: 'Arial Black', sans-serif; color: rgb(47, 52, 75);">1</span>
+            </div>
+
+            <div class="image-container">
+                    <img src="python.png" alt="Изображение" onclick="copyFileContent('fb_txt/fb(500000-1000000).txt')">
+                    <p class="file-name">500000-1000000</p>
+                <span class="download-counter" id="counter500000-1000000">0</span>
+            </div>
+
                 <div class="image-container" onclick="copyFileContent('fb_txt/fb(1000000-1500000).txt')">
                     <img src="python.png" alt="Изображение">
                     <p class="file-name">1000000-1500000</p>
